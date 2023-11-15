@@ -7,6 +7,7 @@
 }
 
 .league-table {
+  width: 100%;
   display: block;
   margin: 0 auto;
   padding: 0;
@@ -33,11 +34,12 @@
 .league-table__cell[data-field="goal-difference"],
 .league-table__cell[data-field="points"] {
   text-align: center;
-  width: 2rem;
+  min-width: 2rem;
 }
 
 .league-table__cell[data-field="team"] {
-  max-width: 12rem;
+  width: 80%;
+  min-width: 10rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
