@@ -73,6 +73,7 @@
 
 .article__content {
   display: block;
+  box-sizing: border-box;
   background-color: var(--color-white);
   color: var(--color-black);
   margin: 1rem auto 2rem auto;
@@ -83,4 +84,10 @@
   border: 1px solid transparent;
   border-radius: 5px;
   box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.16);
+}
+
+@media screen and (max-width: 809px) {
+  .article__content {
+    padding: 0.25rem;
+  }
 }

@@ -99,6 +99,12 @@ a {
   box-sizing: border-box;
 }
 
+@media screen and (max-width: 809px) {
+  .max-width-container {
+    padding: 0.25rem;
+  }
+}
+
 /* Button */
 .btn {
   display: inline-block;
@@ -482,13 +488,15 @@ a {
   text-decoration: underline;
 }
 
-.grid-container {
-  display: grid;
-  align-items: center;
-  grid-template-columns: repeat(auto-fill, 400px);
-  gap: 50px;
-  margin: 2rem auto;
-  width: 850px;
+@media screen and (min-width: 850px) {
+  .grid-container {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fill, 400px);
+    gap: 50px;
+    margin: 2rem auto;
+    width: 850px;
+  }
 }
 
 .grid-item {
@@ -503,6 +511,7 @@ a {
 .card {
   margin: 0;
   padding: 1rem;
+  height: 400px;
 }
 
 .card__image {
