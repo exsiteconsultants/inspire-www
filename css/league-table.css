@@ -1,0 +1,63 @@
+.league-title {
+  font-size: var(--font-size-medium);
+  font-weight: 500;
+  margin: 0.25rem 0 0.75rem 0;
+  padding: 0;
+  color: var(--color-black);
+}
+
+.league-table {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.league-table__heading {
+  padding: 0;
+  margin: 0;
+  border-bottom: 2px solid var(--color-border-medium);
+}
+
+.league-table__heading[data-field="team"] {
+  text-align: left;
+}
+
+.league-table__cell {
+  padding: 4px 2px;
+  vertical-align: middle;
+}
+
+.league-table__cell[data-field="played"],
+.league-table__cell[data-field="goal-difference"],
+.league-table__cell[data-field="points"] {
+  text-align: center;
+  width: 2rem;
+}
+
+.league-table__cell[data-field="team"] {
+  max-width: 12rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.large .league-table__cell[data-field="team"] {
+  max-width: 30rem;
+}
+
+.league-table__row.is-club {
+  background-color: var(--color-sky-blue);
+}
+
+.league-table__crest {
+  height: 20px;
+  width: 20px;
+}
+
+.large .league-table__crest {
+  height: 30px;
+  width: 30px;
+  margin: 3px;
+}

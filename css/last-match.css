@@ -1,0 +1,74 @@
+.last-match__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: auto 0;
+}
+
+.last-match__crest {
+  height: 4rem;
+  width: 4rem;
+}
+
+.small .last-match__crest {
+  height: 2rem;
+  width: 2rem;
+}
+
+.last-match__team-info {
+  position: relative;
+  display: block;
+}
+
+.last-match__team {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0.5rem 0;
+  width: 100%;
+  color: #aaa;
+  font-size: var(--font-size-small);
+}
+
+.last-match__team-name {
+  position: relative;
+  margin: 0 0 0 0.5rem;
+  font-size: var(--font-size-medium);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.small .last-match__team-name {
+  font-size: var(--font-size-small);
+}
+
+.last-match__team-name::before {
+  position: absolute;
+  content: "";
+  left: -12px;
+  top: 0;
+  bottom: 0;
+  background-color: #aaa;
+  width: 1px;
+}
+
+.last-match__score {
+  font-size: var(--font-size-large);
+  position: relative;
+  margin: 0;
+  padding: 0 0.5rem 0 0;
+  width: 2rem;
+  text-align: center;
+}
+
+.last-match__team.is-club {
+  color: black;
+}
+
+@media screen and (max-width: 809px) {
+  .last-match__home-away {
+    display: none;
+  }
+}
