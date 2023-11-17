@@ -1,0 +1,19 @@
+.socialChannels {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  margin: 0 auto;
+  list-style: none;
+}
+
+.socialChannel {
+  margin: 8px;
+  font-size: 0;
+}
+
+.socialChannel svg {
+  height: 24px;
+  width: 24px;
+}

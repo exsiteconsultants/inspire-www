@@ -2,6 +2,7 @@
 import type { Metadata } from 'next'
 import TopNav from '@/app/ui/TopNav'
 import './styles/inspire.css'
+import Socials from './ui/Socials'
 
 export const metadata: Metadata = {
   title: 'Inspire Girls Academy',
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body>
         <TopNav />
         {children}
+        <Socials />
       </body>
     </html>
   )

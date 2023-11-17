@@ -208,8 +208,6 @@ const Home = () => {
             creates a positive environment.
           </p>
         </Content>
-
-        <div className={styles.socialMedia}>Social media links here</div>
       </main>
     </div>
   )
