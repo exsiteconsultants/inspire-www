@@ -6,3 +6,10 @@
   margin: 2rem 0;
   width: 100%;
 }
+
+@media screen and (max-width: 809px) {
+  .grid {
+    display: block;
+    margin: 0;
+  }
+}

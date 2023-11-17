@@ -84,6 +84,12 @@
   padding: 1rem;
 }
 
+@media screen and (max-width: 809px) {
+  .teamContent {
+    padding: 0.25rem;
+  }
+}
+
 .teamData {
   display: flex;
   flex-direction: row;
