@@ -1,0 +1,27 @@
+.content {
+  display: block;
+  box-sizing: border-box;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  margin: 1rem auto 2rem auto;
+  padding: 1rem;
+  width: 100%;
+  max-width: 1000px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.16);
+}
+
+.content > *:first-child {
+  margin-top: 0;
+}
+
+.content > *:last-child {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 809px) {
+  .content {
+    padding: 0.25rem;
+  }
+}

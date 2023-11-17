@@ -1,0 +1,100 @@
+.previousGame {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 0.5rem 1rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.headerLabel,
+.homeAway {
+  font-size: var(--font-size-small);
+  color: var(--color-black);
+  font-weight: 400;
+  text-transform: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: auto 0;
+}
+
+.crest {
+  height: 4rem;
+  width: 4rem;
+}
+
+.small .crest {
+  height: 2rem;
+  width: 2rem;
+}
+
+.teamInfo {
+  position: relative;
+  display: block;
+}
+
+.team {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0.5rem 0;
+  width: 100%;
+  color: #aaa;
+  font-size: var(--font-size-small);
+}
+
+.teamName {
+  position: relative;
+  margin: 0 0 0 0.5rem;
+  font-size: var(--font-size-medium);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.small .teamName {
+  font-size: var(--font-size-small);
+}
+
+.teamName::before {
+  position: absolute;
+  content: '';
+  left: -12px;
+  top: 0;
+  bottom: 0;
+  background-color: #aaa;
+  width: 1px;
+}
+
+.score {
+  font-size: var(--font-size-large);
+  position: relative;
+  margin: 0;
+  padding: 0 0.5rem 0 0;
+  width: 2rem;
+  text-align: center;
+}
+
+.ownClub {
+  color: black;
+}
+
+@media screen and (max-width: 809px) {
+  .homeAway {
+    display: none;
+  }
+}

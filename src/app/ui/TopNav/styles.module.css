@@ -1,0 +1,50 @@
+.topnav {
+  display: flex;
+  padding: 0.5rem 0;
+  background-color: var(--color-black);
+  width: 100%;
+  justify-content: space-between;
+  z-index: 10;
+  position: fixed;
+}
+
+/* Mobile version of top nav */
+@media screen and (max-width: 809px) {
+  .topnav {
+    flex-direction: column;
+  }
+}
+
+.logo {
+  display: flex;
+}
+
+.logoImage {
+  display: block;
+  width: 3rem;
+  margin: 0 0.5rem;
+}
+
+.siteName {
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  align-self: center;
+}
+
+.mainNav {
+  display: flex;
+  color: var(--color-white);
+  margin: 0.5rem 0 0 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.mainNavItem {
+  margin-right: 1.5rem;
+}
+
+.mainNavItemLink {
+  text-decoration: none;
+}

@@ -1,0 +1,37 @@
+.card {
+  margin: 0;
+  padding: 1rem;
+  height: 400px;
+
+  font-size: var(--font-size-large);
+  text-align: center;
+
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.16);
+}
+
+.image {
+  border-radius: 50%;
+  display: block;
+  height: 120px;
+  width: 120px;
+  margin: 0 auto 30px;
+  background-size: cover;
+}
+
+.title {
+  color: var(--color-black);
+  font-size: var(--font-size-large);
+}
+
+.subTitle {
+  color: #666;
+  font-size: var(--font-size-medium);
+}
+
+.text {
+  color: var(--color-black);
+  font-size: var(--font-size-small);
+  text-align: left;
+}

@@ -1,0 +1,31 @@
+.tabNav {
+  margin: 0 auto;
+  padding: 1rem 0 0 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.tabNavItem {
+  flex-grow: 1;
+}
+
+.tabNavItem > a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-white);
+  font-size: var(--font-size-small);
+  font-weight: 400;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.tabNavItem.isActive > a {
+  background-color: var(--color-sky-blue);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-weight: 700;
+  color: var(--color-black);
+}

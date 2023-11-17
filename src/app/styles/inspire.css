@@ -1,0 +1,68 @@
+:root {
+  --font-size-xsmall: 0.75rem;
+  --font-size-small: 0.85rem;
+  --font-size-medium: 1rem;
+  --font-size-large: 1.5rem;
+  --font-size-xlarge: 3.052rem;
+
+  --primary-font: 'Effra', sans-serif;
+
+  --color-white: #fff;
+  --color-black: #222;
+  --color-sky-blue: #87ceeb;
+  --color-border-light: #e8e8e8;
+  --color-border-medium: #ccc;
+}
+
+html,
+body {
+  background-color: var(--color-black);
+  font-family: Effra, sans-serif;
+  font-family: var(--primary_font, 'Effra', sans-serif);
+  font-size: 17px;
+  margin: 0;
+  padding: 0;
+  color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  font-weight: 600;
+
+  border-radius: 5px;
+  line-height: 1rem;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+
+.btn.is-small {
+  font-size: var(--font-size-small);
+  padding: 0.25rem 0.5rem;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--color-sky-blue);
+  color: var(--color-black);
+}
+
+.btn-outline:hover {
+  background: var(--color-sky-blue);
+  color: var(--color-black);
+}
+
+.btn-white {
+  color: var(--color-white);
+}
+
+.btn-white.btn-outline {
+  border: 1px solid var(--color-white);
+}
