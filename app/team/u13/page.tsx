@@ -1,5 +1,9 @@
-import { u13LeagueTableSummary } from '@/data/leagueData'
-import { u13NextGame, u13PreviousResult, u13Schedule } from '@/data/schedule'
+import { u13LeagueTableSummary } from '@/app/data/leagueData'
+import {
+  u13NextGame,
+  u13PreviousResult,
+  u13Schedule,
+} from '@/app/data/schedule'
 import Content from '@/app/ui/Content'
 import ContentHero from '@/app/ui/ContentHero'
 import LeagueTable from '@/app/ui/LeagueTable'

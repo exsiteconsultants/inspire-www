@@ -6,7 +6,7 @@ import {
   u13LeagueTableSummary,
   u15LeagueTableSummary,
   u16LeagueTableSummary,
-} from '@/data/leagueData'
+} from '@/app/data/leagueData'
 import {
   u12NextGame,
   u12PreviousResult,
@@ -16,7 +16,7 @@ import {
   u15PreviousResult,
   u16NextGame,
   u16PreviousResult,
-} from '@/data/schedule'
+} from '@/app/data/schedule'
 import Content from '@/app/ui/Content'
 import TabNav from '@/app/ui/TabNav'
 import NextGame from '@/app/ui/NextGame'
