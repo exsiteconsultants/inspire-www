@@ -96,20 +96,20 @@ export const u12Schedule: ScheduledGame[] = [
 ]
 
 export const u12PreviousResult: Result = {
-  awayTeam: 'Inspire Girls Academy',
-  awayTeamScore: 10,
-  crest: 'watford.png',
-  date: new Date('2023-10-28'),
-  home: false,
-  homeTeam: 'Watford Ladies FC',
-  homeTeamScore: 2,
-}
-
-export const u12NextGame: ScheduledGame = {
+  awayTeam: 'Bournemouth Ladies FC',
+  awayTeamScore: 1,
   crest: 'bournemouth.jpg',
   date: new Date('2023-11-18'),
   home: true,
-  team: 'AFC Bournemouth',
+  homeTeam: 'Inspire Girls Academy',
+  homeTeamScore: 5,
+}
+
+export const u12NextGame: ScheduledGame = {
+  crest: 'stoneham.png',
+  date: new Date('2023-11-25'),
+  home: false,
+  team: 'AFC Stoneham',
 }
 
 export const u13Schedule: ScheduledGame[] = [
@@ -204,10 +204,10 @@ export const u13PreviousResult: Result = {
 }
 
 export const u13NextGame: ScheduledGame = {
-  crest: 'alresford.webp',
-  date: new Date('2023-11-18'),
+  crest: 'watford.png',
+  date: new Date('2023-12-02'),
   home: true,
-  team: 'Alresford Town FC',
+  team: 'Watford Ladies FC',
 }
 
 export const u15Schedule: ScheduledGame[] = [
@@ -310,20 +310,20 @@ export const u15Schedule: ScheduledGame[] = [
 ]
 
 export const u15PreviousResult: Result = {
-  awayTeam: 'FC Evolution',
-  awayTeamScore: 0,
-  crest: 'fcevolution.png',
-  date: new Date('2023-10-04'),
-  home: true,
-  homeTeam: 'Inspire Girls Academy',
-  homeTeamScore: 2,
-}
-
-export const u15NextGame: ScheduledGame = {
+  awayTeam: 'Inspire Girls Academy',
+  awayTeamScore: 11,
   crest: 'romsey.webp',
   date: new Date('2023-11-18'),
   home: false,
-  team: 'Romsey Town Youth FC',
+  homeTeam: 'Romsey Town Youth FC',
+  homeTeamScore: 0,
+}
+
+export const u15NextGame: ScheduledGame = {
+  crest: 'kingshill.jpg',
+  date: new Date('2023-11-25'),
+  home: true,
+  team: 'Kings Hill FC',
 }
 
 export const u16Schedule: ScheduledGame[] = [
@@ -415,17 +415,17 @@ export const u16Schedule: ScheduledGame[] = [
 
 export const u16PreviousResult: Result = {
   awayTeam: 'Inspire Girls Academy',
-  awayTeamScore: 2,
-  crest: 'haringeygirls.jpg',
-  date: new Date('2023-11-04'),
+  awayTeamScore: 13,
+  crest: 'pace.jpg',
+  date: new Date('2023-11-18'),
   home: false,
-  homeTeam: 'HFR Haringey Girls',
+  homeTeam: 'Pace Youth FC',
   homeTeamScore: 0,
 }
 
 export const u16NextGame: ScheduledGame = {
-  crest: 'pace.jpg',
-  date: new Date('2023-11-18'),
+  crest: 'queensparkrangers.png',
+  date: new Date('2023-11-25'),
   home: false,
-  team: 'Pace Youth FC',
+  team: 'Queens Park Rangers FC',
 }
