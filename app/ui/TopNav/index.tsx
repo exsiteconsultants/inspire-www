@@ -1,11 +1,14 @@
+import Image from 'next/image'
 import styles from './styles.module.css'
 
 const TopNav = () => (
   <div className={styles.topnav}>
     <a href="/" className={styles.logo}>
-      <img
-        className={styles.logoImage}
+      <Image
         src="/images/iga_logo.webp"
+        height={50}
+        width={50}
+        className={styles.logoImage}
         alt="IGA Logo"
       />
       <span className={styles.siteName}>Inspire Girls Academy</span>

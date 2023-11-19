@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from 'next/image'
 import { getDateString } from '@/app/lib/date'
 import { ScheduledGame } from '@/app/lib/types'
 import styles from './styles.module.css'
@@ -16,8 +16,10 @@ const ScheduledGame: React.FC<ScheduledGame> = ({
       <p className={styles.homeAway}>{home ? 'HOME' : 'AWAY'}</p>
     </div>
     <div className={styles.content}>
-      <img
+      <Image
         src={`/images/crests/${crest}`}
+        height={68}
+        width={68}
         className={styles.crest}
         alt="Team Crest"
       />

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { LeagueTableEntry } from '@/app/lib/types'
 import styles from './styles.module.css'
 
@@ -24,9 +25,11 @@ export const LeagueTable: React.FC<{
           <tr key={entry.position}>
             <td data-field="position">{entry.position}</td>
             <td data-field="crest">
-              <img
-                className={styles.crest}
+              <Image
                 src={`/images/crests/${entry.crest}`}
+                height={20}
+                width={20}
+                className={styles.crest}
                 alt="Team Logo"
               />
             </td>

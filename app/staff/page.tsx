@@ -22,7 +22,7 @@ const staffData: StaffMember[] = [
     bio: `Joining Inspire Girls Academy at the outset of the 2023/24 season, Aaron holds dual roles as both a coach and our Chair. With a background in commercial ventures and a wealth of management expertise, he plays a vital role in steering us towards sustained growth.
     Aaron's commitment to our committee's vision is not just professional but deeply personal. His unwavering enthusiasm is matched only by a profound dedication to providing girls with an elite pathway in football. This shared passion harmonizes seamlessly with our organizational commitment to creating a nurturing platform where talent can not only flourish but also evolve.
     With a keen eye on the future, Aaron helps drive the committee to continue to raise the bar for aspiring female athletes, turning their dreams into tangible reality. `,
-    image: 'staff/aaron.png',
+    image: 'staff/aaron.jpg',
   },
   {
     name: 'Paul MacRae',
