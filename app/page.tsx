@@ -41,11 +41,14 @@ const Home = () => {
           <div className={styles.featuredStory}>
             <div>
               <h1 className={styles.featuredTitle}>
-                Providing pathways into a career in sport
+                Empowering Dreams, Igniting Excellence
               </h1>
+              <h2 className={styles.featuredSubTitle}>
+                Every Kick Fuels a journey, and Every Goal Sparks Greatness
+              </h2>
             </div>
             <a
-              href="/about.html"
+              href="/about"
               className={`btn btn-white btn-outline ${styles.featuredLink}`}
             >
               Read More
@@ -56,12 +59,23 @@ const Home = () => {
 
       <Content>
         <p>
-          Inspire Girls Academy&apos;s ultimate goal is to INSPIRE, develop and
-          empower female players to be able to reach their highest potential,
-          while helping create leaders and individuals, that will inspire others
-          to do the same. Our core values are &apos;Respect, Honesty and
-          Integrity&apos;, and we believe that a positive attitude creates a
-          positive environment.
+          At Inspire Girls Academy, our commitment extends beyond inspiration;
+          we forge a path of excellence for female athletes, nurturing not just
+          players but visionary leaders. We empower individuals to surpass their
+          highest potential, creating a legacy of inspiration that transcends
+          the game. Rooted in &apos;Respect, Honesty, and Integrity&apos; our
+          philosophy centers on the standards we instill in our players, our
+          coaches, and our club. These principles form the bedrock of our
+          vision, providing essential support pillars to prepare our girls for
+          high-level football.
+        </p>
+        <p>
+          Beyond the field, we aim to instill the same principles across our age
+          groups, ensuring that our athletes are not only equipped with the
+          skills needed for elite football but are also imbued with a positive
+          attitude. This forward-thinking approach prepares our players for the
+          challenges of elite-level competition, laying the foundation for a
+          future where greatness is not just a goal but a constant pursuit.
         </p>
       </Content>
 

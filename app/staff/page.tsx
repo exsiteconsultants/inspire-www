@@ -19,8 +19,10 @@ const staffData: StaffMember[] = [
   {
     name: 'Aaron Campbell',
     title: 'Chairman',
-    bio: `tbd`,
-    image: 'staff/unknown.png',
+    bio: `Joining Inspire Girls Academy at the outset of the 2023/24 season, Aaron holds dual roles as both a coach and our Chair. With a background in commercial ventures and a wealth of management expertise, he plays a vital role in steering us towards sustained growth.
+    Aaron's commitment to our committee's vision is not just professional but deeply personal. His unwavering enthusiasm is matched only by a profound dedication to providing girls with an elite pathway in football. This shared passion harmonizes seamlessly with our organizational commitment to creating a nurturing platform where talent can not only flourish but also evolve.
+    With a keen eye on the future, Aaron helps drive the committee to continue to raise the bar for aspiring female athletes, turning their dreams into tangible reality. `,
+    image: 'staff/aaron.png',
   },
   {
     name: 'Paul MacRae',
@@ -39,6 +41,24 @@ const staffData: StaffMember[] = [
     continue their journey, and ultimately, their dream to play professional football. Darren has
     more recently taken on the role as Chairman for this club.`,
     image: 'staff/darren.jpg',
+  },
+  {
+    name: 'Erin Wetherill',
+    title: 'U13s Coach',
+    bio: `Hello, I'm Erin, and I proudly lead the U13's team at Inspire Girls Academy. My journey
+    with IGA began from its inception, and I've been immersed in the club's growth and
+    development since day one. My coaching philosophy centers on more than just the technical
+    aspects of the game. Drawing from my own experiences, I'm passionate about instilling
+    confidence in young players. I lost and regained my love for football, battled through
+    injuries, and emerged stronger. Now, I aim to empower the girls not only with the skills to
+    excel on the pitch but also with a mindset that fosters resilience and self-assurance.
+    I find joy in educating the girls on injury prevention, playing with confidence, proper
+    warm-up routines, and physical strength on the pitch. It's not just about the game;
+    it's about equipping them with life skills, showing them how to use their abilities
+    effectively and safely.
+    Join me and the U13's team at Inspire Girls Academy, where we don't just play football;
+    we build confidence, resilience, and a love for the game that lasts a lifetime.`,
+    image: 'staff/unknown.png',
   },
 ]
 
