@@ -52,7 +52,7 @@ export default function U13TeamPage() {
         </MainContent>
 
         <SubContent>
-          <Content>
+          <Content compact>
             <PreviousGame {...u13PreviousResult} />
             <NextGame {...u13NextGame} />
           </Content>
