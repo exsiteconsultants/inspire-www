@@ -23,15 +23,24 @@ export default function U12TeamPage() {
       <SplitContent>
         <MainContent>
           <Content>
-            <p>Intro to team</p>
-            <h3>League</h3>
-            <p>The IGA U12 team competes in the JPL Warrior league</p>
-            <h3>Coach</h3>
-            <p>Info about coach</p>
-            <h3>Practice Schedule</h3>
             <p>
-              The team practices twice a week on Tuesdays at Gordons school and
-              ...
+              The Inspire Girls Academy Under 12&apos;s team provides a platform
+              for young girls passionate about football, aspiring to become
+              professional athletes. Our committed passion to driving success
+              has allowed former, and current players the opportunity in
+              securing full-time contracts at the Brighton FC football academy
+              as well as some of our current players having been selected for
+              the Oxford Town and Reading Emerging Talent Centres which have
+              opened avenues for further opportunities in their football
+              journeys.
+            </p>
+            <p>
+              Coached by qualified professionals, the team trains twice weekly,
+              competes in the JPL Warrior league against teams like Crystal
+              Palace and West Ham, and actively participates in cups and premier
+              tournaments across the UK. Our dynamic style of play is built on
+              exciting football, featuring set match targets and scenarios for
+              comprehensive player development.
             </p>
           </Content>
 

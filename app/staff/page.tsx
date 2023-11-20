@@ -60,6 +60,19 @@ const staffData: StaffMember[] = [
     we build confidence, resilience, and a love for the game that lasts a lifetime.`,
     image: 'staff/unknown.png',
   },
+  {
+    name: 'Gareth',
+    title: 'U12s Coach',
+    bio: `Having coached girls football for 14 years both in England and in the USA, my coaching
+     philosophy revolves around a player-centered, or as I prefer, 'needs-centered' approach.
+     This empowers players to take ownership, fostering both individual and team growth.
+     I believe in giving players the freedom to make decisions and solve problems, especially
+     beneficial for younger players who thrive in an environment that encourages expressing
+     themselves on the pitch. I value the input of each player in training and games, promoting
+     problem-solving and decision-making. As a coach, my role is to provide support when needed,
+     building strong relationships by sharing ideas with the individuals I work with.`,
+    image: 'staff/unknown.png',
+  },
 ]
 
 export default function StaffPage() {
