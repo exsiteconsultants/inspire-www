@@ -103,16 +103,15 @@ const Home = () => {
 
             <Content>
               <p>
-                The Inspire girls academy under 12&apos;s team was formed in
-                2023 to start an all girls team to allow young girls with a
-                passion for football and a desire to one day become a
-                professional footballer or sport person.
-              </p>
-              <p>
-                The under 12&apos;s team trains twice a week with qualified
-                coaches and competes in the JPL Warrior league against teams
-                such as Crystal Palace. The team also plays in cups and premiere
-                tournaments across the UK.
+                The Inspire Girls Academy Under 12&apos;s team provides a
+                platform for young girls passionate about football, aspiring to
+                become professional athletes. Our committed passion to driving
+                success has allowed former, and current players the opportunity
+                in securing full-time contracts at the Brighton FC football
+                academy as well as some of our current players having been
+                selected for the Oxford Town and Reading Emerging Talent Centres
+                which have opened avenues for further opportunities in their
+                football journeys.
               </p>
             </Content>
           </div>
