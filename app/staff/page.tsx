@@ -120,6 +120,7 @@ football.`,
     bio: `
 Kieran has been coaching Girls football since starting the FA Wildcats program at AFC Walcountians
 in 2018. He holds an FA Level 1 qualification and is awaiting his UEFA C coaching course start.
+
 Kieran manages and coaches U13 Girls on Sundays in the Surrey County Womens & Girls League, in
 addition to the U9 Boys team in the Surrey Youth League and being Assistant Coach to the Adults
 1stXI, that are currently in the Surrey Premier County Football League.`,
