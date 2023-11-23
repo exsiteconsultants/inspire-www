@@ -59,7 +59,7 @@ Darren has more recently taken on the role as treasurer for this club.`,
   },
   {
     name: 'Erin Wetherill',
-    title: 'U13s Coach',
+    title: 'U13s Manager',
     bio: `
 Hello, I'm Erin, and I proudly lead the U13's team at Inspire Girls Academy. My journey
 with IGA began from its inception, and I've been immersed in the club's growth and
@@ -116,7 +116,7 @@ football.`,
   },
   {
     name: 'Kieran Doyle',
-    title: 'U13s Manager',
+    title: 'U13s Coach',
     bio: `
 Kieran has been coaching Girls football since starting the FA Wildcats program at AFC Walcountians
 in 2018. He holds an FA Level 1 qualification and is awaiting his UEFA C coaching course start.
