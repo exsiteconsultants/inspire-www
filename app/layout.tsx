@@ -1,8 +1,8 @@
-/* eslint-disable @next/next/no-img-element */
+import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
+import Socials from '@/app/ui/Socials'
 import TopNav from '@/app/ui/TopNav'
 import './styles/inspire.css'
-import Socials from './ui/Socials'
 
 export const metadata: Metadata = {
   title: 'Inspire Girls Academy',
@@ -41,6 +41,7 @@ export default function RootLayout({
       <body>
         <TopNav />
         {children}
+        <Analytics />
         <Socials />
       </body>
     </html>
