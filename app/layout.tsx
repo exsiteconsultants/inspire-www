@@ -7,7 +7,7 @@ import './styles/inspire.css'
 export const metadata: Metadata = {
   title: 'Inspire Girls Academy',
   description:
-    'Inspire Girls Academy is a football club for femail player that wish to progress from grassroot to compete at an eleite level and persue a career in sports.',
+    'Inspire Girls Academy is a football club for femail player that wish to progress from grassroot to compete at an elite level and persue a career in sports.',
   icons: {
     icon: [
       {
