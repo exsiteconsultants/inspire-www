@@ -1,5 +1,5 @@
 'use client'
-
+import Image from 'next/image'
 import { useState } from 'react'
 import {
   u12LeagueTableSummary,
@@ -23,6 +23,7 @@ import NextGame from '@/app/ui/NextGame'
 import LeagueTable from '@/app/ui/LeagueTable'
 import PreviousGame from '@/app/ui/PreviousGame'
 import styles from './page.module.css'
+import { ThreeColumnSplit } from './ui/ThreColumnSplit'
 
 const options = ['u12', 'u13', 'u15', 'u16']
 
@@ -31,29 +32,13 @@ const Home = () => {
   return (
     <main className={styles.homepage}>
       <div className={styles.hero}>
-        <div className={styles.featuredArticle}>
-          <div
-            className={styles.featuredImage}
-            style={{ backgroundImage: 'url(/images/stories/cover.jpg)' }}
-          >
-            &nbsp;
-          </div>
-          <div className={styles.featuredStory}>
-            <div>
-              <h1 className={styles.featuredTitle}>
-                Empowering Dreams, Igniting Excellence
-              </h1>
-              <h2 className={styles.featuredSubTitle}>
-                Every Kick Fuels a journey, and Every Goal Sparks Greatness
-              </h2>
-            </div>
-            <a
-              href="/about"
-              className={`btn btn-white btn-outline ${styles.featuredLink}`}
-            >
-              Read More
-            </a>
-          </div>
+        <div>
+          <h1 className={styles.featuredTitle}>
+            Empowering Dreams, Igniting Excellence
+          </h1>
+          <h2 className={styles.featuredSubTitle}>
+            Every Kick Fuels a journey, and Every Goal Sparks Greatness
+          </h2>
         </div>
       </div>
 
@@ -77,6 +62,35 @@ const Home = () => {
           challenges of elite-level competition, laying the foundation for a
           future where greatness is not just a goal but a constant pursuit.
         </p>
+      </Content>
+
+      <Content>
+        <ThreeColumnSplit>
+          <div>
+            <Image
+              src="/images/hampshirefa.png"
+              height={64}
+              width={49}
+              alt="Hampshire FA"
+            />
+          </div>
+          <div>
+            <Image
+              src="/images/accredited.png"
+              height={64}
+              width={122}
+              alt="FA Accreditation"
+            />
+          </div>
+          <div>
+            <Image
+              src="/images/warriors.jpg"
+              height={64}
+              width={44}
+              alt="JPL Warriors"
+            />
+          </div>
+        </ThreeColumnSplit>
       </Content>
 
       <TabNav
