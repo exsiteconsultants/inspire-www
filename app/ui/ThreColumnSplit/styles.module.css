@@ -1,0 +1,7 @@
+.threeColumnSplit {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fill, 33%);
+  margin: 0;
+  width: 100%;
+}
