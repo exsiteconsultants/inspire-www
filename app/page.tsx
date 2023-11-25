@@ -37,7 +37,7 @@ const Home = () => {
             Empowering Dreams, Igniting Excellence
           </h1>
           <h2 className={styles.featuredSubTitle}>
-            Every Kick Fuels a journey, and Every Goal Sparks Greatness
+            Where Every Kick Fuels a journey, and Every Goal Sparks Greatness
           </h2>
         </div>
       </div>

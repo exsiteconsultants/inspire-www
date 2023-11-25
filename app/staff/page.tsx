@@ -19,6 +19,7 @@ Sophie now continues to inspire over
 2,000 players across the country. Sophie has recently got back from America where she was head
 coach for several elite travel teams in New York, New Jersey & Pennsylvania.`,
     image: 'staff/sophie.jpg',
+    email: 'president@inspiregirlsacademy.co.uk',
   },
   {
     name: 'Aaron Campbell',
@@ -33,6 +34,7 @@ dedication to providing girls with an elite pathway in football. This shared pas
 seamlessly with our organizational commitment to creating a nurturing platform where talent can
 not only flourish but also evolve.`,
     image: 'staff/aaron.jpg',
+    email: 'chair@inspiregirlsacademy.co.uk',
   },
   {
     name: 'Paul MacRae',
@@ -41,10 +43,10 @@ not only flourish but also evolve.`,
 Paul, or Jocky, inherited his nickname from his adult playing days at Hartley Wintney. Paul
 played for several other local clubs including Bagshot, Bass Alton & Fleet Spurs.
 
-A very well
-respected coach, he has 17 years of coaching experience at all ages, including Allied Counties
+A very well respected coach, he has 17 years of coaching experience at all ages, including Allied Counties
 u18s, adult mens teams and a former Aldershot & Farnborough District coach at u11s.`,
     image: 'staff/paul.jpg',
+    email: 'vicechair@inspiregirlsacademy.co.uk',
   },
   {
     name: 'Darren Moggach',
@@ -56,6 +58,7 @@ continue their journey, and ultimately, their dream to play professional footbal
 
 Darren has more recently taken on the role as treasurer for this club.`,
     image: 'staff/darren.jpg',
+    email: 'treasurer@inspiregirlsacademy.co.uk',
   },
   {
     name: 'Erin Wetherill',
@@ -77,9 +80,22 @@ effectively and safely.
 Join me and the U13's team at Inspire Girls Academy, where we don't just play football;
 we build confidence, resilience, and a love for the game that lasts a lifetime.`,
     image: 'staff/unknown.png',
+    email: 'u13@inspiregirlsacademy.co.uk',
   },
   {
-    name: 'Gareth',
+    name: 'Kieran Doyle',
+    title: 'U13s Coach',
+    bio: `
+Kieran has been coaching Girls football since starting the FA Wildcats program at AFC Walcountians
+in 2018. He holds an FA Level 1 qualification and is awaiting his UEFA C coaching course start.
+
+Kieran manages and coaches U13 Girls on Sundays in the Surrey County Womens & Girls League, in
+addition to the U9 Boys team in the Surrey Youth League and being Assistant Coach to the Adults
+1stXI, that are currently in the Surrey Premier County Football League.`,
+    image: 'staff/kieran.png',
+  },
+  {
+    name: 'Gareth Wedgewood',
     title: 'U12s Coach',
     bio: `
 Having coached girls football for 14 years both in England and in the USA, my coaching
@@ -93,7 +109,7 @@ problem-solving and decision-making.
 
 As a coach, my role is to provide support when needed,
 building strong relationships by sharing ideas with the individuals I work with.`,
-    image: 'staff/unknown.png',
+    image: 'staff/gareth.jpg',
   },
   {
     name: 'Hannah Cooper',
@@ -114,18 +130,6 @@ National League Side Gillingham (now Chatham), Hannah's expertise spans both gra
 football.`,
     image: 'staff/coops.jpg',
   },
-  {
-    name: 'Kieran Doyle',
-    title: 'U13s Coach',
-    bio: `
-Kieran has been coaching Girls football since starting the FA Wildcats program at AFC Walcountians
-in 2018. He holds an FA Level 1 qualification and is awaiting his UEFA C coaching course start.
-
-Kieran manages and coaches U13 Girls on Sundays in the Surrey County Womens & Girls League, in
-addition to the U9 Boys team in the Surrey Youth League and being Assistant Coach to the Adults
-1stXI, that are currently in the Surrey Premier County Football League.`,
-    image: 'staff/kieran.png',
-  },
 ]
 
 export default function StaffPage() {
@@ -140,9 +144,10 @@ export default function StaffPage() {
           {staffData.map((staff) => (
             <ImageCard
               key={staff.name}
-              title={staff.name}
-              subTitle={staff.title}
+              email={staff.email}
               image={staff.image}
+              subTitle={staff.title}
+              title={staff.name}
             >
               <Markdown>{staff.bio}</Markdown>
             </ImageCard>

@@ -30,4 +30,5 @@ export interface StaffMember {
   title: string
   bio: string
   image: string
+  email?: string
 }
