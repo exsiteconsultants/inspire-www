@@ -96,19 +96,19 @@ export const u12Schedule: ScheduledGame[] = [
 ]
 
 export const u12PreviousResult: Result = {
-  awayTeam: 'Bournemouth Ladies FC',
-  awayTeamScore: 1,
-  crest: 'bournemouth.jpg',
-  date: new Date('2023-11-18'),
-  home: true,
-  homeTeam: 'Inspire Girls Academy',
+  crest: 'stoneham.png',
+  date: new Date('2023-11-25'),
+  home: false,
+  homeTeam: 'AFC Stoneham',
   homeTeamScore: 5,
+  awayTeam: 'Inspire Girls Academy',
+  awayTeamScore: 5,
 }
 
 export const u12NextGame: ScheduledGame = {
   crest: 'stoneham.png',
-  date: new Date('2023-11-25'),
-  home: false,
+  date: new Date('2023-12-02'),
+  home: true,
   team: 'AFC Stoneham',
 }
 
@@ -310,20 +310,20 @@ export const u15Schedule: ScheduledGame[] = [
 ]
 
 export const u15PreviousResult: Result = {
-  awayTeam: 'Inspire Girls Academy',
-  awayTeamScore: 11,
-  crest: 'romsey.webp',
-  date: new Date('2023-11-18'),
-  home: false,
-  homeTeam: 'Romsey Town Youth FC',
-  homeTeamScore: 0,
-}
-
-export const u15NextGame: ScheduledGame = {
   crest: 'kingshill.jpg',
   date: new Date('2023-11-25'),
   home: true,
-  team: 'Kings Hill FC',
+  homeTeam: 'Inspire Girls Academy',
+  homeTeamScore: 1,
+  awayTeam: 'Kings Hill FC',
+  awayTeamScore: 0,
+}
+
+export const u15NextGame: ScheduledGame = {
+  crest: 'watford.png',
+  date: new Date('2023-12-02'),
+  home: false,
+  team: 'Watford Ladies FC',
 }
 
 export const u16Schedule: ScheduledGame[] = [
@@ -414,18 +414,18 @@ export const u16Schedule: ScheduledGame[] = [
 ]
 
 export const u16PreviousResult: Result = {
-  awayTeam: 'Inspire Girls Academy',
-  awayTeamScore: 13,
-  crest: 'pace.jpg',
-  date: new Date('2023-11-18'),
-  home: false,
-  homeTeam: 'Pace Youth FC',
-  homeTeamScore: 0,
-}
-
-export const u16NextGame: ScheduledGame = {
   crest: 'queensparkrangers.png',
   date: new Date('2023-11-25'),
   home: false,
-  team: 'Queens Park Rangers FC',
+  homeTeam: 'Queens Park Rangers FC',
+  homeTeamScore: 3,
+  awayTeam: 'Inspire Girls Academy',
+  awayTeamScore: 2,
+}
+
+export const u16NextGame: ScheduledGame = {
+  crest: 'blank.png',
+  date: new Date('2023-12-02'),
+  home: true,
+  team: 'LFTC',
 }
