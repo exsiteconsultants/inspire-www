@@ -1,6 +1,5 @@
 import jsdom from 'jsdom'
-import { db } from '@/lib/db'
-import { Fixture, JPLTeam, JPLTeamInput, LeagueTableEntry } from './types'
+import { JPLGame, JPLTeam, JPLTeamInput, JPLLeagueTableEntry } from './types'
 
 const { JSDOM } = jsdom
 
@@ -96,12 +95,11 @@ async function getTeams({
 function parseGames({
   document,
   groupID,
-  teamID,
 }: {
   document: Document
   teamID: number
   groupID: number
-}): Fixture[] {
+}): JPLGame[] {
   const gamesSectionSelector =
     '#app-main > div:nth-child(1) > section > div > div:nth-child(3) > div > div > div > div:nth-child(6) > div > div.row > div'
   const gameSectionSelector = '.hidden-xs'
@@ -118,10 +116,10 @@ function parseGames({
     return []
   }
 
-  const fixtures = Array.from(gameSections).map((section) => {
+  const games = Array.from(gameSections).map((section) => {
     const cells = section.querySelectorAll('td')
 
-    const matchNumber = parseInt(cells[0].textContent || '', 10)
+    const gameNumber = parseInt(cells[0].textContent || '', 10)
     const dateTimeStr = section
       .querySelector('h4')
       ?.textContent?.replace('\n', '')
@@ -166,7 +164,8 @@ function parseGames({
     // Instead of storing home and away teams just store the opposition and if the game is home or away
     // this will make it easier to pick the crest and we know who WE are
 
-    const fixture = {
+    const game = {
+      gameNumber,
       groupID,
       awayTeamId,
       awayTeamScore,
@@ -174,13 +173,12 @@ function parseGames({
       homeTeamId,
       homeTeamScore,
       location,
-      matchNumber,
     }
 
-    return fixture
+    return game
   })
 
-  return fixtures
+  return games
 }
 
 /**
@@ -189,9 +187,11 @@ function parseGames({
  */
 function parseLeagueTable({
   document,
+  groupID,
 }: {
   document: Document
-}): LeagueTableEntry[] {
+  groupID: number
+}): JPLLeagueTableEntry[] {
   //Get the table rows that contain the league table
   const leagueTableRows = document.querySelectorAll(leagueTableRowsSelector)
 
@@ -200,7 +200,7 @@ function parseLeagueTable({
       const cells = row.querySelectorAll('td')
       return cells !== null && cells.length > 0
     })
-    .map((row): LeagueTableEntry => {
+    .map((row): JPLLeagueTableEntry => {
       const cells = row.querySelectorAll('td')
 
       const position = parseInt(cells[0].textContent || '', 10)
@@ -217,6 +217,7 @@ function parseLeagueTable({
       const points = parseInt(cells[9].textContent || '', 10)
 
       return {
+        groupID,
         teamID,
         position,
         played,
@@ -245,22 +246,19 @@ export async function parseTeamPage(sourceTeam: JPLTeamInput) {
   const document = dom.window.document
 
   // Extract the league table from the page
-  const leagueTable = parseLeagueTable({ document })
+  const leagueTable = parseLeagueTable({ document, groupID })
 
   // Parse all the games in the schedule
-  const schedule = parseGames({ document, teamID, groupID })
+  const games = parseGames({ document, teamID, groupID })
 
   // Get all the teams and their associated Crests URL
   const teams = await getTeams({ document, eventID, groupID })
 
   return {
     leagueTable,
-    schedule,
+    games,
     teams,
   }
 }
-
-// TODO - Write a task to go through all the teams and ensure they are added to the database,
-// fetch their crest and upload that to blobl storage
 
 export default parseTeamPage

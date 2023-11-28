@@ -15,7 +15,8 @@ export interface SourceTeam {
   crestUrl: string
 }
 
-export interface LeagueTableEntry {
+export interface JPLLeagueTableEntry {
+  groupID: number
   position: number
   teamID: number
   played: number
@@ -36,15 +37,15 @@ export interface JPLTeam {
   crest: string
 }
 
-export interface Fixture {
+export interface JPLGame {
   groupID: number
   awayTeamId: number
   awayTeamScore?: number
   dateTime: Date
-  homeTeamId?: number
+  homeTeamId: number
   homeTeamScore?: number
   location?: string
-  matchNumber: number
+  gameNumber: number
 }
 
 export interface JPLTeamInput {
