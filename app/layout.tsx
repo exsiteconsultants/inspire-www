@@ -2,7 +2,7 @@ import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import Socials from '../ui/Socials'
 import TopNav from '../ui/TopNav'
-import './styles/inspire.css'
+import './global.css'
 
 export const metadata: Metadata = {
   title: 'Inspire Girls Academy',
