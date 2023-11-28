@@ -1,4 +1,4 @@
-import { LeagueTableEntry } from '@/app/lib/types'
+import { LeagueTableEntry } from '../types'
 
 export const u12LeagueTableSummary: LeagueTableEntry[] = [
   {

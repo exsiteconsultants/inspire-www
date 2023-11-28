@@ -1,5 +1,5 @@
-import Content from '@/app/ui/Content'
-import ContentHero from '@/app/ui/ContentHero'
+import Content from '../../ui/Content'
+import ContentHero from '../../ui/ContentHero'
 
 export default function AboutPage() {
   return (

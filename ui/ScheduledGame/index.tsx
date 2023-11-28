@@ -1,18 +1,18 @@
 import Image from 'next/image'
-import { getDateString } from '@/app/lib/date'
-import { ScheduledGame } from '@/app/lib/types'
+import { getDateString } from '../../lib/date'
+import { ScheduledGame } from '../../types'
 import styles from './styles.module.css'
 
-const NextGame: React.FC<ScheduledGame> = ({
+const ScheduledGame: React.FC<ScheduledGame> = ({
   crest,
   date,
   home,
   location,
   team,
 }) => (
-  <article data-testid="next-game" className={styles.nextGame}>
+  <article className={styles.scheduledGame}>
     <div className={styles.header}>
-      <p className={styles.headerLabel}>Next Match - {getDateString(date)}</p>
+      <p className={styles.headerLabel}>{getDateString(date)}</p>
       <p className={styles.homeAway}>{home ? 'HOME' : 'AWAY'}</p>
     </div>
     <div className={styles.content}>
@@ -32,4 +32,4 @@ const NextGame: React.FC<ScheduledGame> = ({
   </article>
 )
 
-export default NextGame
+export default ScheduledGame

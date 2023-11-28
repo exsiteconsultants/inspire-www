@@ -1,9 +1,9 @@
 import Markdown from 'react-markdown'
-import { StaffMember } from '@/app/lib/types'
-import Content from '@/app/ui/Content'
-import ContentHero from '@/app/ui/ContentHero'
-import Grid from '@/app/ui/Grid'
-import ImageCard from '@/app/ui/ImageCard'
+import { StaffMember } from '../../types'
+import Content from '../../ui/Content'
+import ContentHero from '../../ui/ContentHero'
+import Grid from '../../ui/Grid'
+import ImageCard from '../../ui/ImageCard'
 
 const staffData: StaffMember[] = [
   {

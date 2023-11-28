@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import { getDateString } from '@/app/lib/date'
+import { getDateString } from '../../lib/date'
 import styles from './styles.module.css'
-import { Result } from '@/app/lib/types'
+import { Result } from '../../types'
 
 const PreviousGame: React.FC<Result> = ({
   awayTeam,

@@ -1,16 +1,16 @@
-import { u12LeagueTableSummary } from '@/app/data/leagueData'
+import { u12LeagueTableSummary } from '../../../data/leagueData'
 import {
   u12NextGame,
   u12PreviousResult,
   u12Schedule,
-} from '@/app/data/schedule'
-import Content from '@/app/ui/Content'
-import ContentHero from '@/app/ui/ContentHero'
-import LeagueTable from '@/app/ui/LeagueTable'
-import NextGame from '@/app/ui/NextGame'
-import ScheduledGame from '@/app/ui/ScheduledGame'
-import { MainContent, SplitContent, SubContent } from '@/app/ui/SplitContent'
-import PreviousGame from '@/app/ui/PreviousGame'
+} from '../../../data/schedule'
+import Content from '../../../ui/Content'
+import ContentHero from '../../../ui/ContentHero'
+import LeagueTable from '../../../ui/LeagueTable'
+import NextGame from '../../../ui/NextGame'
+import ScheduledGame from '../../../ui/ScheduledGame'
+import { MainContent, SplitContent, SubContent } from '../../../ui/SplitContent'
+import PreviousGame from '../../../ui/PreviousGame'
 
 export default function U12TeamPage() {
   return (

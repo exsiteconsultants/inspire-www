@@ -1,7 +1,7 @@
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
-import Socials from '@/app/ui/Socials'
-import TopNav from '@/app/ui/TopNav'
+import Socials from '../ui/Socials'
+import TopNav from '../ui/TopNav'
 import './styles/inspire.css'
 
 export const metadata: Metadata = {

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { LeagueTableEntry } from '@/app/lib/types'
+import { LeagueTableEntry } from '../../types'
 import styles from './styles.module.css'
 
 export const LeagueTable: React.FC<{
