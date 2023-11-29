@@ -1,4 +1,4 @@
-import { Result, ScheduledGame } from '../types'
+import { Result, ScheduledGame } from '../app/types'
 
 export const u12Schedule: ScheduledGame[] = [
   {

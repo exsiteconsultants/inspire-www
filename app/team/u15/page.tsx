@@ -4,13 +4,13 @@ import {
   u15PreviousResult,
   u15Schedule,
 } from '../../../data/schedule'
-import Content from '../../../ui/Content'
-import ContentHero from '../../../ui/ContentHero'
-import LeagueTable from '../../../ui/LeagueTable'
-import NextGame from '../../../ui/NextGame'
-import ScheduledGame from '../../../ui/ScheduledGame'
-import { MainContent, SplitContent, SubContent } from '../../../ui/SplitContent'
-import PreviousGame from '../../../ui/PreviousGame'
+import Content from '../../ui/Content'
+import ContentHero from '../../ui/ContentHero'
+import LeagueTable from '../../ui/LeagueTable'
+import NextGame from '../../ui/NextGame'
+import ScheduledGame from '../../ui/ScheduledGame'
+import { MainContent, SplitContent, SubContent } from '../../ui/SplitContent'
+import PreviousGame from '../../ui/PreviousGame'
 
 export default function U15TeamPage() {
   return (

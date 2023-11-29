@@ -1,7 +1,7 @@
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
-import Socials from '../ui/Socials'
-import TopNav from '../ui/TopNav'
+import Socials from './ui/Socials'
+import TopNav from './ui/TopNav'
 import './global.css'
 
 export const metadata: Metadata = {

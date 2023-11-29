@@ -1,13 +1,10 @@
-import parseTeamPage from '@/lib/gotSport/parseTeamPage'
-import { addTeams, db } from '@/lib/db'
-
-import { leagueTable, games, teams } from './data'
-import { updateLeagueTable } from '@/lib/db/updateLeagueTable'
-import { updateGames } from '@/lib/db/updateGames'
+import { revalidatePath } from 'next/cache'
+import { parseTeamPage } from '@/app/lib/gotSport'
+import { addTeams, db, updateGames, updateLeagueTable } from '@/app/lib/db'
 
 export const dynamic = 'force-dynamic' // defaults to force-static
 
-export async function GET(request: Request) {
+export async function GET() {
   try {
     const teams = await db
       .selectFrom('team')
@@ -28,6 +25,10 @@ export async function GET(request: Request) {
       await updateLeagueTable({ leagueTable: data.leagueTable })
       await updateGames({ games: data.games })
     }
+
+    // Invalidate the cache for the home page and the team pages
+    revalidatePath('/', 'page')
+    revalidatePath('/teamtest/[id]', 'page')
 
     return Response.json({ done: true })
   } catch (error) {

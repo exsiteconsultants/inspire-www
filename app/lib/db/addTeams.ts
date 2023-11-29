@@ -3,7 +3,7 @@ import {
   list as listBlobs,
   ListBlobResultBlob,
 } from '@vercel/blob'
-import { JPLTeam } from '@/lib/gotSport/types'
+import { JPLTeam } from '@/app/lib/gotSport/types'
 import { db } from '.'
 
 const crestImagePrefix = 'images/crests'

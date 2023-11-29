@@ -1,6 +1,6 @@
 import { del, list } from '@vercel/blob'
 
-export async function DELETE(request: Request) {
+export async function DELETE() {
   const { blobs } = await list({ prefix: 'images/crests' })
 
   for (const blob of blobs) {

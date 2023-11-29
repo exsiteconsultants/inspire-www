@@ -17,13 +17,13 @@ import {
   u16NextGame,
   u16PreviousResult,
 } from '../data/schedule'
-import Content from '../ui/Content'
-import TabNav from '../ui/TabNav'
-import NextGame from '../ui/NextGame'
-import LeagueTable from '../ui/LeagueTable'
-import PreviousGame from '../ui/PreviousGame'
+import Content from './ui/Content'
+import TabNav from './ui/TabNav'
+import NextGame from './ui/NextGame'
+import LeagueTable from './ui/LeagueTable'
+import PreviousGame from './ui/PreviousGame'
 import styles from './page.module.css'
-import { ThreeColumnSplit } from '../ui/ThreColumnSplit'
+import { ThreeColumnSplit } from './ui/ThreColumnSplit'
 
 const options = ['u12', 'u13', 'u15', 'u16']
 

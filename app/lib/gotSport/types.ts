@@ -1,13 +1,3 @@
-interface SourceGame {
-  matchNumber: number
-  dateTime: string
-  location: string
-  homeTeamId: number
-  homeTeamScore: number
-  awayTeamId: number
-  awayTeamScore: number
-}
-
 export interface SourceTeam {
   teamId: number
   groupId: number

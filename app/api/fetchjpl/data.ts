@@ -2,7 +2,7 @@ import {
   JPLGame as JPLGame,
   JPLTeam,
   JPLLeagueTableEntry,
-} from '@/lib/gotSport/types'
+} from '@/app/lib/gotSport/types'
 
 export const leagueTable: JPLLeagueTableEntry[] = [
   {
