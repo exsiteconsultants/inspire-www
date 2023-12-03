@@ -1,6 +1,6 @@
 import styles from './styles.module.css'
 
-const ImageCard: React.FC<{
+export const ImageCard: React.FC<{
   children?: React.ReactNode
   email?: string
   image: string

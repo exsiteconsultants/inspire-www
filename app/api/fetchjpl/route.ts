@@ -1,6 +1,6 @@
 import { revalidatePath } from 'next/cache'
 import { parseTeamPage } from '@/app/lib/gotSport'
-import { addTeams, db, updateGames, updateLeagueTable } from '@/app/lib/db'
+import { addTeams, db, updateGames, updateLeagueTable } from '@/app/db'
 
 export const dynamic = 'force-dynamic' // defaults to force-static
 

@@ -1,9 +1,13 @@
 import Markdown from 'react-markdown'
-import { StaffMember } from '../types'
-import Content from '../ui/Content'
-import ContentHero from '../ui/ContentHero'
-import Grid from '../ui/Grid'
-import ImageCard from '../ui/ImageCard'
+import { Content, ContentHero, Grid, ImageCard } from '@/app/ui'
+
+export interface StaffMember {
+  name: string
+  title: string
+  bio: string
+  image: string
+  email?: string
+}
 
 const staffData: StaffMember[] = [
   {

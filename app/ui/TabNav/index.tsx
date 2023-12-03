@@ -1,12 +1,11 @@
-import { Dispatch, SetStateAction } from 'react'
+import Link from 'next/link'
 import styles from './styles.module.css'
 
-const TabNav: React.FC<{
+export const TabNav: React.FC<{
   options: string[]
   selectedTab: string
-  setSelectedTab: Dispatch<SetStateAction<string>>
-}> = ({ options, selectedTab, setSelectedTab }) => (
-  <ul className={styles.tabNav} role="tablist">
+}> = ({ options, selectedTab }) => (
+  <ul className={styles.tabNav} role="tablist" id="tab-nav">
     {options.map((option) => (
       <li
         key={option}
@@ -15,13 +14,14 @@ const TabNav: React.FC<{
           option === selectedTab ? styles.isActive : ''
         } `}
       >
-        <a
-          onClick={() => setSelectedTab(option)}
+        <Link
+          id={`link-${option}`}
+          href={`/${option}#link-${option}`}
           role="tab"
           aria-selected={option === selectedTab}
         >
           {option}
-        </a>
+        </Link>
       </li>
     ))}
   </ul>
