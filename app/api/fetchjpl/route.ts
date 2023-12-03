@@ -22,8 +22,8 @@ export async function GET() {
           teamID: team.id,
         })
 
+        await addTeams({ teams: data.teams, age: team.age })
         await Promise.all([
-          addTeams({ teams: data.teams, age: team.age }),
           updateLeagueTable({ leagueTable: data.leagueTable }),
           updateGames({ games: data.games }),
         ])
