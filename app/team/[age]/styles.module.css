@@ -1,3 +1,7 @@
 .resultList > * {
   border-bottom: 1px solid var(--color-border-light);
 }
+
+.wrapper {
+  margin-bottom: 2rem;
+}

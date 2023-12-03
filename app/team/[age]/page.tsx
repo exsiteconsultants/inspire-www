@@ -36,7 +36,7 @@ export default async function TeamPage({
   const teamSchedule = await getTeamSchedule({ teamID: team.team_id })
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <ContentHero
         image={`/team_photos/${team.team_photo}`}
         title={`${team.name} - ${team.age}`}
@@ -49,7 +49,7 @@ export default async function TeamPage({
           </Content>
 
           <Content>
-            <LeagueTableFull groupID={team.group_id} teamID={team.id} />
+            <LeagueTableFull groupID={team.group_id} teamID={team.team_id} />
           </Content>
 
           {teamResults.length > 0 && (
@@ -84,6 +84,6 @@ export default async function TeamPage({
           </Content>
         </SubContent>
       </SplitContent>
-    </>
+    </div>
   )
 }
