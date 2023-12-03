@@ -1,39 +1,39 @@
 import Image from 'next/image'
 import { getDateString } from '@/app/lib/date'
+import { Result } from '@/app/db'
 import styles from './styles.module.css'
-import { Result } from '@/app/lib/types'
 
-const PreviousGame: React.FC<Result> = ({
-  awayTeam,
-  awayTeamScore,
-  crest,
-  date,
-  home,
-  homeTeam,
-  homeTeamScore,
-}) => (
+export const PreviousGame: React.FC<{
+  game: Result
+  latestResult?: boolean
+}> = ({ game, latestResult }) => (
   <article data-testid="previous-game" className={styles.previousGame}>
     <div className={styles.header}>
-      <p className={styles.headerLabel}>Last Result - {getDateString(date)}</p>
-      <p className={styles.homeAway}>{home ? 'HOME' : 'AWAY'}</p>
+      <p className={styles.headerLabel}>
+        {latestResult && <span>Last Result - </span>}
+        {getDateString(game.date)}
+      </p>
+      <p className={styles.homeAway}>{game.home ? 'HOME' : 'AWAY'}</p>
     </div>
     <div className={styles.content}>
-      <Image
-        src={`/images/crests/${crest}`}
-        height={68}
-        width={68}
-        className={styles.crest}
-        alt="Team Crest"
-      />
+      {game.crest && (
+        <Image
+          src={game.crest}
+          height={68}
+          width={68}
+          className={styles.crest}
+          alt="Team Crest"
+        />
+      )}
 
       <div className={styles.info}>
-        <div className={`${styles.team} ${home ? styles.ownClub : ''}`}>
-          <h3 className={styles.teamName}>{homeTeam}</h3>
-          <p className={styles.score}>{homeTeamScore}</p>
+        <div className={`${styles.team} ${game.home ? styles.ownClub : ''}`}>
+          <h3 className={styles.teamName}>{game.home_team_name}</h3>
+          <p className={styles.score}>{game.home_team_score}</p>
         </div>
-        <div className={`${styles.team} ${home ? '' : styles.ownClub}`}>
-          <h3 className={styles.teamName}>{awayTeam}</h3>
-          <p className={styles.score}>{awayTeamScore}</p>
+        <div className={`${styles.team} ${game.home ? '' : styles.ownClub}`}>
+          <h3 className={styles.teamName}>{game.away_team_name}</h3>
+          <p className={styles.score}>{game.away_team_score}</p>
         </div>
       </div>
     </div>

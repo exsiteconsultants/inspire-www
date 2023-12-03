@@ -1,6 +1,6 @@
 import styles from './styles.module.css'
 
-const ContentHero: React.FC<{
+export const ContentHero: React.FC<{
   image: string
   subTitle?: string
   title: string

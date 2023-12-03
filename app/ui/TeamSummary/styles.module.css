@@ -1,0 +1,33 @@
+.teamData {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: stretch;
+  margin: 1rem auto;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.16);
+  background-color: var(--color-white);
+  width: 100%;
+  max-width: 1200px;
+}
+.teamData > * {
+  border-left: 1px solid var(--color-border-light);
+  padding: 0.5rem 1rem;
+}
+.teamData > *:first-child {
+  border-left: none;
+}
+@media screen and (max-width: 980px) {
+  .teamData {
+    flex-direction: column;
+  }
+  .teamData > * {
+    border-left: none;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+  .teamData > *:last-child {
+    border-bottom: none;
+  }
+}

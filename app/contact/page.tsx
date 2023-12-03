@@ -1,5 +1,4 @@
-import Content from '@/app/ui/Content'
-import ContentHero from '@/app/ui/ContentHero'
+import { Content, ContentHero } from '@/app/ui'
 
 export default function AboutPage() {
   return (
