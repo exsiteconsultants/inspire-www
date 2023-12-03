@@ -1,10 +1,6 @@
 import { Team, db } from '@/app/db'
 import { getTeamCrestUrl } from '@/app/lib/gotSport'
-import {
-  put as putBlob,
-  list as listBlobs,
-  ListBlobResultBlob,
-} from '@vercel/blob'
+import { put as putBlob, list as listBlobs } from '@vercel/blob'
 
 const crestImagePrefix = 'images/crests'
 
