@@ -52,3 +52,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.ownTeam {
+  background: var(--color-sky-blue);
+}

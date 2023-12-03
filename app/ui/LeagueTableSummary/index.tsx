@@ -38,7 +38,7 @@ export const LeagueTableSummary: React.FC<{
             <th data-field="team" colSpan={3}>
               Team
             </th>
-            <th data-field="played">P</th>
+            <th data-field="played">MP</th>
             <th data-field="goal-difference">GD</th>
             <th data-field="points">PTS</th>
           </tr>
@@ -46,7 +46,10 @@ export const LeagueTableSummary: React.FC<{
 
         <tbody>
           {leagueTableSubset.map((entry) => (
-            <tr key={`league-position-${entry.position}`}>
+            <tr
+              key={`league-position-${entry.position}`}
+              className={entry.team_id === teamID ? styles.ownTeam : ''}
+            >
               <td data-field="position">{entry.position}</td>
               <td data-field="crest">
                 {entry.crest && (
