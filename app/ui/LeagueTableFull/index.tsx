@@ -34,7 +34,7 @@ export const LeagueTableFull: React.FC<{
           {leagueTableEntries.map((entry) => (
             <tr
               key={entry.position}
-              className={entry.team_id == teamID ? styles.ownTeam : ''}
+              className={entry.team_id === teamID ? styles.ownTeam : ''}
             >
               <td data-field="position">{entry.position}</td>
               <td data-field="crest">

@@ -67,3 +67,22 @@
 .ownTeam td {
   font-weight: 700;
 }
+
+@media screen and (max-width: 809px) {
+  .table td[data-field='won'],
+  .table td[data-field='lost'],
+  .table td[data-field='drawn'],
+  .table td[data-field='goals-for'],
+  .table td[data-field='goals-against'],
+  .table th[data-field='won'],
+  .table th[data-field='lost'],
+  .table th[data-field='drawn'],
+  .table th[data-field='goals-for'],
+  .table th[data-field='goals-against'] {
+    display: none;
+  }
+}
+
+.ownTeam {
+  background: var(--color-sky-blue);
+}
