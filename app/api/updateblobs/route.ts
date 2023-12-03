@@ -2,6 +2,8 @@ import { Team, db } from '@/app/db'
 import { getTeamCrestUrl } from '@/app/lib/gotSport'
 import { put as putBlob, list as listBlobs } from '@vercel/blob'
 
+export const dynamic = 'force-dynamic' // defaults to force-static
+
 const crestImagePrefix = 'images/crests'
 
 export async function GET() {
