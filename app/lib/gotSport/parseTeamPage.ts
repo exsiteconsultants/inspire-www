@@ -8,7 +8,7 @@ const gotoSportRoolUrl = 'https://system.gotsport.com'
 const leagueTableRowsSelector =
   '#app-main > div:nth-child(1) > section > div > div:nth-child(3) > div > div > div > div:nth-child(6) > div > div.panel.panel-gs-custom > div.panel-body > div > div > div > table > tbody > tr'
 
-async function getTeamCrestUrl({
+export async function getTeamCrestUrl({
   eventID,
   teamID,
 }: {

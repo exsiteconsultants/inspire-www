@@ -1,12 +1,5 @@
-import {
-  put as putBlob,
-  list as listBlobs,
-  ListBlobResultBlob,
-} from '@vercel/blob'
 import { JPLTeam } from '@/app/lib/gotSport/types'
 import { db } from '.'
-
-const crestImagePrefix = 'images/crests'
 
 async function addTeamToDatabase({
   age,
@@ -39,41 +32,6 @@ async function addTeamToDatabase({
   }
 }
 
-async function addTeamCrest({
-  blobs,
-  team,
-}: {
-  blobs: ListBlobResultBlob[]
-  team: JPLTeam
-}) {
-  const imageName = team.crest.split('/').pop()?.split('?')[0]
-  const imageExtension = imageName?.split('.').pop()
-  const blobPath = `${crestImagePrefix}/${team.teamID}.${imageExtension}`
-  let teamBlobUrl: string | null = null
-
-  const existingBlob = blobs.find((blob) => blob.pathname === blobPath)
-
-  if (existingBlob) {
-    teamBlobUrl = existingBlob.url
-  } else if (imageName) {
-    const image = await fetch(team.crest)
-    const sourceBlob = await image.blob()
-    const { url } = await putBlob(blobPath, sourceBlob, {
-      access: 'public',
-    })
-
-    teamBlobUrl = url
-  }
-
-  if (teamBlobUrl) {
-    await db
-      .updateTable('team')
-      .set({ crest: teamBlobUrl })
-      .where('id', '=', team.teamID)
-      .execute()
-  }
-}
-
 export async function addTeams({
   age,
   teams,
@@ -82,9 +40,6 @@ export async function addTeams({
   teams: JPLTeam[]
 }) {
   try {
-    // Get a list of the blobs in the images/crests folder
-    const { blobs } = await listBlobs({ prefix: crestImagePrefix })
-
     // For each team check if it exists in the database
     for (const team of teams) {
       const dbTeams = await db
@@ -94,11 +49,9 @@ export async function addTeams({
 
       // If the team doesn't exist in the database then add it.
       if (Number(dbTeams.length) === 0) {
+        console.log('Add Team')
         await addTeamToDatabase({ age, team })
       }
-
-      // Check the crest image exists and if not add it.
-      await addTeamCrest({ blobs, team })
     }
   } catch (e) {
     console.error(e)

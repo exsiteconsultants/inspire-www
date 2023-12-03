@@ -14,17 +14,23 @@ export async function GET() {
       .where('team.isownteam', '=', true)
       .execute()
 
-    for (const team of teams) {
-      const data = await parseTeamPage({
-        eventID: team.event_id,
-        groupID: team.group_id,
-        teamID: team.id,
-      })
+    await Promise.all(
+      teams.map(async (team) => {
+        const data = await parseTeamPage({
+          eventID: team.event_id,
+          groupID: team.group_id,
+          teamID: team.id,
+        })
 
-      await addTeams({ teams: data.teams, age: team.age })
-      await updateLeagueTable({ leagueTable: data.leagueTable })
-      await updateGames({ games: data.games })
-    }
+        await Promise.all([
+          addTeams({ teams: data.teams, age: team.age }),
+          updateLeagueTable({ leagueTable: data.leagueTable }),
+          updateGames({ games: data.games }),
+        ])
+      })
+    )
+
+    console.log('Done')
 
     // Invalidate the cache for the home page and the team pages
     revalidatePath('/', 'page')
