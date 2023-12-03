@@ -28,6 +28,7 @@ export async function GET() {
 
     // Invalidate the cache for the home page and the team pages
     revalidatePath('/', 'page')
+    revalidatePath('/[id]', 'page')
     revalidatePath('/teamtest/[id]', 'page')
 
     return Response.json({ done: true })
