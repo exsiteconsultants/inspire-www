@@ -80,11 +80,6 @@ async function getTeams({
     } as JPLTeam
   })
 
-  for (const team of teams) {
-    const crest = await getTeamCrestUrl({ eventID, teamID: team.teamID })
-    team.crest = `${gotoSportRoolUrl}${crest}`
-  }
-
   return teams
 }
 
