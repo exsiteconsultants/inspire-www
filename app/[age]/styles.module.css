@@ -15,7 +15,7 @@
   background-image: url(/images/stories/cover.jpg);
 }
 
-@media screen and (max-width: 809px) {
+@media screen and (max-width: var(--mobile-breakpoint)) {
   .hero {
     height: 30vh;
     min-height: auto;
@@ -60,7 +60,7 @@
   color: var(--color-white);
   margin: 0 auto;
 }
-@media screen and (max-width: 809px) {
+@media screen and (max-width: var(--mobile-breakpoint)) {
   .featuredTitle {
     font-size: var(--font-size-large);
     line-height: 1.5rem;
@@ -74,7 +74,7 @@
   color: var(--color-white);
   margin: 0.5rem 0 0 0;
 }
-@media screen and (max-width: 809px) {
+@media screen and (max-width: var(--mobile-breakpoint)) {
   .featuredSubTitle {
     background-color: rgba(0, 0, 0, 0.15);
     font-size: var(--font-size-small);
@@ -86,7 +86,7 @@
   margin: 2rem 0 0 0;
   z-index: 5;
 }
-@media screen and (max-width: 809px) {
+@media screen and (max-width: var(--mobile-breakpoint)) {
   .maxWidthContainer {
     padding: 0.25rem;
   }
@@ -103,7 +103,7 @@
   margin: 0;
   padding: 1rem;
 }
-@media screen and (max-width: 809px) {
+@media screen and (max-width: var(--mobile-breakpoint)) {
   .teamContent {
     padding: 0.25rem;
   }

@@ -9,7 +9,7 @@
 }
 
 /* Mobile version of top nav */
-@media screen and (max-width: 809px) {
+@media screen and (max-width: 755px) {
   .header {
     flex-direction: column;
   }

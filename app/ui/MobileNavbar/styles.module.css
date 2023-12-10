@@ -3,7 +3,7 @@
 }
 
 /* menu on mobile */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 755px) {
   .mobileNav {
     display: block;
   }
