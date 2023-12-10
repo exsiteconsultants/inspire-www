@@ -32,3 +32,8 @@ a {
   color: var(--color-white);
   text-decoration: none;
 }
+
+.quote {
+  font-style: italic;
+  font-weight: 500;
+}
