@@ -30,13 +30,14 @@ coach for several elite travel teams in New York, New Jersey & Pennsylvania.`,
     title: 'Chairman',
     bio: `
 Joining Inspire Girls Academy at the outset of the 2023/24 season, Aaron holds dual roles as
-both a coach and our Chair. With a background in commercial ventures and a wealth of management
-expertise, he plays a vital role in steering us towards sustained growth.
+both a coach and our Chair. With a background in business and a wealth of management expertise,
+he plays a vital role in steering us towards sustained growth.
 
-Aaron's commitment to our committee's vision and unwavering enthusiasm is matched only by a profound
-dedication to providing girls with an elite pathway in football. This shared passion harmonizes
-seamlessly with our organizational commitment to creating a nurturing platform where talent can
-not only flourish but also evolve.`,
+Aaron's commitment to our committee's vision and unwavering enthusiasm is matched only by a
+profound dedication to providing girls with an elite pathway in football. This shared
+passion harmonizes seamlessly with our organizational commitment to creating a nurturing
+platform where talent can not only flourish but also evolve.
+    `,
     image: 'staff/aaron.jpg',
     email: 'chair@inspiregirlsacademy.co.uk',
   },
