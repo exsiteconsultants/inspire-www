@@ -39,6 +39,10 @@ const menuItemsData = [
     url: '/about',
     submenu: [
       {
+        title: 'IGA History',
+        url: '/about/history',
+      },
+      {
         title: 'Our Mission',
         url: '/about/mission',
       },

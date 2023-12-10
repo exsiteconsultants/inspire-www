@@ -3,7 +3,7 @@ import { Content, ContentHero } from '@/app/ui'
 export default function AboutPage() {
   return (
     <>
-      <ContentHero image="/banners/socksandboots.jpg" title="About IGA" />
+      <ContentHero image="/banners/socksandboots.jpg" title="Our History" />
 
       <Content>
         <h2>Our Journey Unfolds: The Inspire Girls Academy Chronicle</h2>
