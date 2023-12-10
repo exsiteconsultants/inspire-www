@@ -61,6 +61,35 @@ export default function AboutPage() {
           </a>
           .
         </p>
+
+        <h2>Connect on Social Media</h2>
+        <p>
+          Stay connected with Inspire Girls Academy through our social media
+          channels. Follow us on{' '}
+          <a
+            href="https://www.facebook.com/profile.php?id=61553031356173"
+            target="_blank"
+          >
+            Facebook
+          </a>
+          ,{' '}
+          <a
+            href="https://instagram.com/inspiregirlsacademy?igshid=NGVhN2U2NjQ0Yg=="
+            target="_blank"
+          >
+            Instagram
+          </a>
+          , and{' '}
+          <a href="https://twitter.com/iga_fc" target="_blank">
+            Twitter/X
+          </a>{' '}
+          to stay updated on the latest news, events, and inspiring stories.
+        </p>
+
+        <p>
+          We look forward to hearing from you and being a part of your journey
+          with Inspire Girls Academy!
+        </p>
       </Content>
     </>
   )
