@@ -1,7 +1,6 @@
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
-import Socials from './ui/Socials'
-import TopNav from './ui/TopNav'
+import {Header, Socials} from './ui'
 import './global.css'
 
 export const metadata: Metadata = {
@@ -39,7 +38,7 @@ export default function RootLayout({
         ></link>
       </head>
       <body>
-        <TopNav />
+        <Header />
         {children}
         <Analytics />
         <Socials />

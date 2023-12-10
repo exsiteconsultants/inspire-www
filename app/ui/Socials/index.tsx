@@ -1,6 +1,6 @@
 import styles from './styles.module.css'
 
-const Socials = () => (
+export const Socials = () => (
   <ul className={styles.socialChannels}>
     <li className={styles.socialChannel}>
       <a

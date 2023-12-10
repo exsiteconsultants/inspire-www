@@ -39,5 +39,3 @@ export const PreviousGame: React.FC<{
     </div>
   </article>
 )
-
-export default PreviousGame

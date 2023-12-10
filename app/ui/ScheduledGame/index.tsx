@@ -35,5 +35,3 @@ export const ScheduledGame: React.FC<{
     </article>
   )
 }
-
-export default ScheduledGame

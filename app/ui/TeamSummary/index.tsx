@@ -21,5 +21,3 @@ export const TeamSummary: React.FC<{ age: string }> = async ({ age }) => {
     </div>
   )
 }
-
-export default TeamSummary

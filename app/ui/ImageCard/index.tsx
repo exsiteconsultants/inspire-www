@@ -22,5 +22,3 @@ export const ImageCard: React.FC<{
     )}
   </div>
 )
-
-export default ImageCard
