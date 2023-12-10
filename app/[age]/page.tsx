@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { Content, TabNav, TeamSummary, ThreeColumnSplit } from '@/app/ui'
 import styles from './styles.module.css'
 
@@ -78,7 +79,7 @@ const Home = ({ params }: { params: { age: string } }) => {
           <TeamSummary age={age} />
 
           <div className={styles.teamLink}>
-            <a href={`/team/${age}`}>Find out more</a>
+            <Link href={`/team/${age}`}>Find out more</Link>
           </div>
 
           <Content>
