@@ -73,5 +73,3 @@ export const LeagueTableSummary: React.FC<{
     </div>
   )
 }
-
-export default LeagueTableSummary

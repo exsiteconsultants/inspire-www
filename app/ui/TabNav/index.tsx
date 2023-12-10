@@ -26,5 +26,3 @@ export const TabNav: React.FC<{
     ))}
   </ul>
 )
-
-export default TabNav

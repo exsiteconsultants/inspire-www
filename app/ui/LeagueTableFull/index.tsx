@@ -64,5 +64,3 @@ export const LeagueTableFull: React.FC<{
     </div>
   )
 }
-
-export default LeagueTableFull
