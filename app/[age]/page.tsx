@@ -27,7 +27,11 @@ const Home = ({ params }: { params: { age: string } }) => {
           we forge a path of excellence for female athletes, nurturing not just
           players but visionary leaders. We empower individuals to surpass their
           highest potential, creating a legacy of inspiration that transcends
-          the game. Rooted in &apos;Respect, Honesty, and Integrity&apos; our
+          the game.
+        </p>
+        <p>
+          Rooted in{' '}
+          <strong>&apos;Respect, Honesty, and Integrity,&apos;</strong> our
           philosophy centers on the standards we instill in our players, our
           coaches, and our club. These principles form the bedrock of our
           vision, providing essential support pillars to prepare our girls for
@@ -37,9 +41,15 @@ const Home = ({ params }: { params: { age: string } }) => {
           Beyond the field, we aim to instill the same principles across our age
           groups, ensuring that our athletes are not only equipped with the
           skills needed for elite football but are also imbued with a positive
-          attitude. This forward-thinking approach prepares our players for the
-          challenges of elite-level competition, laying the foundation for a
-          future where greatness is not just a goal but a constant pursuit.
+          attitude.
+        </p>
+        <p>
+          This forward-thinking approach prepares our players for the challenges
+          of elite-level competition, laying the foundation for a future where
+          {''}
+          <strong>
+            &apos;greatness is not just a goal but a constant pursuit&apos;
+          </strong>
         </p>
       </Content>
 
