@@ -37,6 +37,12 @@ const menuItemsData = [
   {
     title: 'About',
     url: '/about',
+    submenu: [
+      {
+        title: 'Our Mission',
+        url: '/about/mission',
+      },
+    ],
   },
   {
     title: 'Contact',
@@ -45,7 +51,7 @@ const menuItemsData = [
 ]
 
 export const Header = () => (
-  <div className={styles.topnav}>
+  <div className={styles.header}>
     <Link href="/" className={styles.logo}>
       <Image
         src="/images/iga_logo.webp"
