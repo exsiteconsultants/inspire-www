@@ -1,33 +1,38 @@
 import Image from 'next/image'
-import { getLeague, getLeagueTable } from '@/app/db'
+import { League, LeagueTableEntryAndTeam, TeamAndGroup } from '@/app/db/types'
 import styles from './styles.module.css'
 
-export const LeagueTableSummary: React.FC<{
-  groupID: number
-  teamID: number
-}> = async ({ groupID, teamID }) => {
-  const league = await getLeague(groupID)
-  const leagueTableEntries = await getLeagueTable(groupID)
-
+const LeagueTableSummary: React.FC<{
+  league: League
+  leagueTableEntries: LeagueTableEntryAndTeam[]
+  team: TeamAndGroup
+}> = ({ league, leagueTableEntries, team }) => {
   // Get the poosition for the selected team and only show the team the the 2 teams above and below
   // or 2 teams below or 2 teams above
   const teamPositionIndex = leagueTableEntries.findIndex(
-    (entry) => entry.team_id === teamID
+    (entry) => entry.team_id === team.team_id
   )
 
-  let startIndex = teamPositionIndex - 1
-  let endIndex = teamPositionIndex + 1
+  let startIndex: number
+  let endIndex: number
 
   if (teamPositionIndex === 0) {
-    endIndex = teamPositionIndex + 2
-  }
-
-  if (teamPositionIndex === leagueTableEntries.length - 1) {
-    startIndex = teamPositionIndex - 2
+    startIndex = 0
+    endIndex = 2
+  } else if (teamPositionIndex === leagueTableEntries.length - 1) {
+    startIndex = leagueTableEntries.length - 4
+    endIndex = leagueTableEntries.length - 1
+  } else {
+    startIndex = teamPositionIndex - 1
+    endIndex = teamPositionIndex + 1
   }
 
   // Get the subset of the league table entries
   const leagueTableSubset = leagueTableEntries.slice(startIndex, endIndex + 1)
+
+  if (team.age === 'U13') {
+    console.log('leagueTableSubset', leagueTableSubset)
+  }
 
   return (
     <div data-testid="league-table-summary" className={styles.leagueTable}>
@@ -48,7 +53,7 @@ export const LeagueTableSummary: React.FC<{
           {leagueTableSubset.map((entry) => (
             <tr
               key={`league-position-${entry.position}`}
-              className={entry.team_id === teamID ? styles.ownTeam : ''}
+              className={entry.team_id === team.team_id ? styles.ownTeam : ''}
             >
               <td data-field="position">{entry.position}</td>
               <td data-field="crest">
@@ -64,7 +69,7 @@ export const LeagueTableSummary: React.FC<{
               </td>
               <td data-field="team">{entry.team}</td>
               <td data-field="played">{entry.played}</td>
-              <td data-field="goal-difference">{entry.goalDifference}</td>
+              <td data-field="goal-difference">{entry.goal_difference}</td>
               <td data-field="points">{entry.points}</td>
             </tr>
           ))}
@@ -73,3 +78,5 @@ export const LeagueTableSummary: React.FC<{
     </div>
   )
 }
+
+export default LeagueTableSummary

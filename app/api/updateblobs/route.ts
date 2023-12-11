@@ -1,4 +1,5 @@
-import { Team, db } from '@/app/db'
+import { Team } from '@/app/db/types'
+import { getDB } from '@/app/db/db'
 import { getTeamCrestUrl } from '@/app/lib/gotSport'
 import { put as putBlob, list as listBlobs } from '@vercel/blob'
 
@@ -7,6 +8,8 @@ export const dynamic = 'force-dynamic' // defaults to force-static
 const crestImagePrefix = 'images/crests'
 
 export async function GET() {
+  const db = getDB()
+
   // Get a list of the teams and associated crest urls
   const teams: Team[] = await db.selectFrom('team').selectAll().execute()
 
@@ -41,6 +44,8 @@ export async function GET() {
 }
 
 async function addTeamCrest({ team }: { team: Team }) {
+  const db = getDB()
+
   // Get the event ID for the team
   const result = await db
     .selectFrom('league')

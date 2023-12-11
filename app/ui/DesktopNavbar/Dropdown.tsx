@@ -1,4 +1,4 @@
-import { MenuItems } from './MenuItems'
+import MenuItems from './MenuItems'
 import { MenuItemData } from '../../lib/types'
 import styles from './styles.module.css'
 

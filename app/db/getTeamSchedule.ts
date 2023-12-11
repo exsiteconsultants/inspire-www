@@ -1,10 +1,12 @@
-import { SheduledGameRecord, db } from '.'
+import { SheduledGameRecord } from './types'
+import { getDB } from './db'
 
-export async function getTeamSchedule({
+export default async function getTeamSchedule({
   teamID,
 }: {
   teamID: number
 }): Promise<SheduledGameRecord[]> {
+  const db = getDB()
   const today = new Date()
   today.setHours(0, 0, 0, 0)
 

@@ -3,7 +3,7 @@ import { MenuItemData } from '@/app/lib/types'
 import MobileDropdown from './MobileDropdown'
 import styles from './styles.module.css'
 
-export const MobileMenuItems: React.FC<{
+const MobileMenuItems: React.FC<{
   items: MenuItemData
   depthLevel: number
   showMenu: boolean
@@ -58,3 +58,5 @@ export const MobileMenuItems: React.FC<{
     </li>
   )
 }
+
+export default MobileMenuItems

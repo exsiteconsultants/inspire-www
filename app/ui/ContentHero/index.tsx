@@ -18,3 +18,5 @@ export const ContentHero: React.FC<{
     </div>
   </div>
 )
+
+export default ContentHero

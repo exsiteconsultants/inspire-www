@@ -1,10 +1,12 @@
-import { Result, db } from '.'
+import { Result } from './types'
+import { getDB } from './db'
 
-export async function getTeamResults({
+export default async function getTeamResults({
   teamID,
 }: {
   teamID: number
 }): Promise<Result[]> {
+  const db = getDB()
   const game = await db
     .selectFrom('game')
     .innerJoin('team as home', 'home.id', 'game.home_team_id')

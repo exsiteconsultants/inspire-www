@@ -1,7 +1,8 @@
-import { db } from '.'
+import { getDB } from './db'
 import { JPLGame } from '../lib/gotSport/types'
 
 async function updateGame({ game }: { game: JPLGame }) {
+  const db = getDB()
   await db
     .deleteFrom('game')
     .where((eb) =>
@@ -28,7 +29,7 @@ async function updateGame({ game }: { game: JPLGame }) {
     .execute()
 }
 
-export async function updateGames({ games }: { games: JPLGame[] }) {
+export default async function updateGames({ games }: { games: JPLGame[] }) {
   const start = Date.now()
   await Promise.all(games.map((game) => updateGame({ game })))
   console.log('Updating games took', Date.now() - start, 'ms')

@@ -1,5 +1,5 @@
 import { MenuItemData } from '@/app/lib/types'
-import { MobileMenuItems } from './MobileMenuItems'
+import MobileMenuItems from './MobileMenuItems'
 import styles from './styles.module.css'
 
 export const MobileDropdown: React.FC<{

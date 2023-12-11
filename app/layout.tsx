@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
-import {Header, Socials} from './ui'
+import Header from '@/app/ui/Header'
+import Socials from '@/app/ui/Socials'
 import './global.css'
 
 export const metadata: Metadata = {

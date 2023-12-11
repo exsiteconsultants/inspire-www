@@ -1,0 +1,33 @@
+.teamContentWrapper {
+  margin: 0;
+  background-color: var(--color-sky-blue);
+}
+
+.teamContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: stretch;
+  margin: 0;
+  padding: 1rem;
+}
+
+@media screen and (max-width: var(--mobile-breakpoint)) {
+  .teamContent {
+    padding: 0.25rem;
+  }
+}
+
+.teamLink {
+  display: inline-block;
+  width: 15rem;
+  margin: 0 auto 1rem auto;
+  padding: 0.5rem;
+  background: var(--color-black);
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}

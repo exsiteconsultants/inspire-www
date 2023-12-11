@@ -1,11 +1,12 @@
 import { JPLLeagueTableEntry } from '@/app/lib/gotSport/types'
-import { db } from '.'
+import { getDB } from './db'
 
-export async function updateLeagueTable({
+export default async function updateLeagueTable({
   leagueTable,
 }: {
   leagueTable: JPLLeagueTableEntry[]
 }) {
+  const db = getDB()
   const start = Date.now()
 
   const newEntries = leagueTable.map((entry) => ({

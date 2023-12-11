@@ -1,23 +1,15 @@
-import { db } from '.'
+import { LeagueTableEntryAndTeam } from './types'
+import { getDB } from './db'
 
-export async function getLeagueTable(groupID: number) {
+export default async function getLeagueTable(
+  groupID: number
+): Promise<LeagueTableEntryAndTeam[]> {
   // Get the League table
+  const db = getDB()
   const leagueTableEntries = await db
     .selectFrom('league_table')
     .innerJoin('team', 'league_table.team_id', 'team.id')
-    .select([
-      'league_table.position',
-      'league_table.played',
-      'league_table.won',
-      'league_table.drawn',
-      'league_table.lost',
-      'league_table.goals_for as goalsFor',
-      'league_table.goals_against as goalsAgainst',
-      'league_table.goal_difference as goalDifference',
-      'league_table.points',
-      'team.name as team',
-      'team.crest',
-    ])
+    .select(['team.name as team', 'team.crest'])
     .where('group_id', '=', groupID)
     .orderBy('position', 'asc')
     .selectAll()
