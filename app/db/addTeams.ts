@@ -1,5 +1,5 @@
 import { JPLTeam } from '@/app/lib/gotSport/types'
-import { db } from './db'
+import { getDB } from './db'
 
 async function addTeamToDatabase({
   age,
@@ -10,6 +10,7 @@ async function addTeamToDatabase({
 }) {
   // Add the team
   try {
+    const db = getDB()
     await db
       .insertInto('team')
       .values({
@@ -40,6 +41,7 @@ export async function addTeams({
   teams: JPLTeam[]
 }) {
   try {
+    const db = getDB()
     // For each team check if it exists in the database
     for (const team of teams) {
       const dbTeams = await db

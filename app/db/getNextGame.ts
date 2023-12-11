@@ -1,4 +1,4 @@
-import { db } from './db'
+import { getDB } from './db'
 import { SheduledGameRecord } from './types'
 
 export async function getNextGame({
@@ -10,6 +10,7 @@ export async function getNextGame({
   const today = new Date()
   today.setHours(0, 0, 0, 0)
 
+  const db = getDB()
   const game = await db
     .selectFrom('game')
     .innerJoin('team as home', 'home.id', 'game.home_team_id')

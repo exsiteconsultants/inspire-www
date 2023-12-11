@@ -1,7 +1,8 @@
-import { db } from './db'
+import { getDB } from './db'
 import { JPLGame } from '../lib/gotSport/types'
 
 async function updateGame({ game }: { game: JPLGame }) {
+  const db = getDB()
   await db
     .deleteFrom('game')
     .where((eb) =>

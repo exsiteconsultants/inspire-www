@@ -1,11 +1,12 @@
 import { SheduledGameRecord } from './types'
-import { db } from './db'
+import { getDB } from './db'
 
 export async function getTeamSchedule({
   teamID,
 }: {
   teamID: number
 }): Promise<SheduledGameRecord[]> {
+  const db = getDB()
   const today = new Date()
   today.setHours(0, 0, 0, 0)
 

@@ -1,7 +1,7 @@
 import { revalidatePath } from 'next/cache'
 import { parseTeamPage } from '@/app/lib/gotSport'
 
-import { db } from '@/app/db/db'
+import { getDB } from '@/app/db/db'
 import { addTeams } from '@/app/db/addTeams'
 import { updateGames } from '@/app/db/updateGames'
 import { updateLeagueTable } from '@/app/db/updateLeagueTable'
@@ -10,6 +10,7 @@ export const dynamic = 'force-dynamic' // defaults to force-static
 
 export async function GET() {
   try {
+    const db = getDB()
     const teams = await db
       .selectFrom('team')
       .innerJoin('league_team', 'team.id', 'league_team.team_id')
