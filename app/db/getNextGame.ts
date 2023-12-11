@@ -1,7 +1,7 @@
 import { getDB } from './db'
 import { SheduledGameRecord } from './types'
 
-export async function getNextGame({
+export default async function getNextGame({
   teamID,
 }: {
   teamID: number

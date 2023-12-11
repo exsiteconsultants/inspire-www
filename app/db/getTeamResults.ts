@@ -1,7 +1,7 @@
 import { Result } from './types'
 import { getDB } from './db'
 
-export async function getTeamResults({
+export default async function getTeamResults({
   teamID,
 }: {
   teamID: number

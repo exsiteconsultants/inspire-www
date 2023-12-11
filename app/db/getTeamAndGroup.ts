@@ -1,9 +1,9 @@
 import { TeamAndGroup } from './types'
 import { getDB } from './db'
 
-export const getTeamAndGroup = async (
+export default async function getTeamAndGroup(
   teamID: number
-): Promise<TeamAndGroup | undefined> => {
+): Promise<TeamAndGroup | undefined> {
   const db = getDB()
   return await db
     .selectFrom('team')

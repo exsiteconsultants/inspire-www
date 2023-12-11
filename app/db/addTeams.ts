@@ -33,7 +33,7 @@ async function addTeamToDatabase({
   }
 }
 
-export async function addTeams({
+export default async function addTeams({
   age,
   teams,
 }: {

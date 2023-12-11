@@ -1,7 +1,7 @@
 import { Result } from './types'
 import { getDB } from './db'
 
-export async function getLastPlayedGame({
+export default async function getLastPlayedGame({
   teamID,
 }: {
   teamID: number

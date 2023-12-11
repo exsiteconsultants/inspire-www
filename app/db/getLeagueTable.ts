@@ -1,7 +1,7 @@
 import { LeagueTableEntryAndTeam } from './types'
 import { getDB } from './db'
 
-export async function getLeagueTable(
+export default async function getLeagueTable(
   groupID: number
 ): Promise<LeagueTableEntryAndTeam[]> {
   // Get the League table
