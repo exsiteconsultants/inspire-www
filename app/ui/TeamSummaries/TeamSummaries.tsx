@@ -40,9 +40,9 @@ const TeamSummaries: React.FC<{
                 team={team}
               />
 
-              <div className={styles.teamLink}>
-                <Link href={`/team/${team?.age}`}>Find out more</Link>
-              </div>
+              <Link className={styles.teamLink} href={`/team/${team?.age}`}>
+                Find out more
+              </Link>
 
               {team && team.bio && team.bio !== 'tbd' && (
                 <Content>
