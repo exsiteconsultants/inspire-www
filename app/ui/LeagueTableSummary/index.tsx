@@ -1,16 +1,16 @@
 import Image from 'next/image'
-import { League, LeagueTableEntryAndTeam, Team } from '@/app/db/types'
+import { League, LeagueTableEntryAndTeam, TeamAndGroup } from '@/app/db/types'
 import styles from './styles.module.css'
 
 export const LeagueTableSummary: React.FC<{
   league: League
   leagueTableEntries: LeagueTableEntryAndTeam[]
-  team: Team
+  team: TeamAndGroup
 }> = ({ league, leagueTableEntries, team }) => {
   // Get the poosition for the selected team and only show the team the the 2 teams above and below
   // or 2 teams below or 2 teams above
   const teamPositionIndex = leagueTableEntries.findIndex(
-    (entry) => entry.team_id === team.id
+    (entry) => entry.team_id === team.team_id
   )
 
   let startIndex = teamPositionIndex - 1
@@ -46,7 +46,7 @@ export const LeagueTableSummary: React.FC<{
           {leagueTableSubset.map((entry) => (
             <tr
               key={`league-position-${entry.position}`}
-              className={entry.team_id === team.id ? styles.ownTeam : ''}
+              className={entry.team_id === team.team_id ? styles.ownTeam : ''}
             >
               <td data-field="position">{entry.position}</td>
               <td data-field="crest">
