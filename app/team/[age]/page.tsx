@@ -1,22 +1,19 @@
 import Markdown from 'react-markdown'
-import {
-  getLastPlayedGame,
-  getNextGame,
-  getTeamAndGroupForAge,
-  getTeamResults,
-  getTeamSchedule,
-} from '@/app/db'
-import {
-  Content,
-  ContentHero,
-  LeagueTableFull,
-  PreviousGame,
-  ScheduledGame,
-  MainContent,
-  SplitContent,
-  SubContent,
-} from '@/app/ui'
+
 import styles from './styles.module.css'
+import { getLastPlayedGame } from '@/app/db/getLastGame'
+import { getNextGame } from '@/app/db/getNextGame'
+import { getTeamAndGroupForAge } from '@/app/db/getTeamAndGroupForAge'
+import { getTeamResults } from '@/app/db/getTeamResults'
+import { getTeamSchedule } from '@/app/db/getTeamSchedule'
+import Content from '@/app/ui/Content'
+import ContentHero from '@/app/ui/ContentHero'
+import LeagueTableFull from '@/app/ui/LeagueTableFull'
+import { PreviousGame } from '@/app/ui/PreviousGame'
+import { ScheduledGame } from '@/app/ui/ScheduledGame'
+import { SplitContent, MainContent, SubContent } from '@/app/ui/SplitContent'
+import { getLeague } from '@/app/db/getLeague'
+import { getLeagueTable } from '@/app/db/getLeagueTable'
 
 export default async function TeamPage({
   params,
@@ -34,6 +31,8 @@ export default async function TeamPage({
   const nextGame = await getNextGame({ teamID: team.team_id })
   const teamResults = await getTeamResults({ teamID: team.team_id })
   const teamSchedule = await getTeamSchedule({ teamID: team.team_id })
+  const league = await getLeague(team.group_id)
+  const leagueTableEntries = await getLeagueTable(team.group_id)
 
   return (
     <div className={styles.wrapper}>
@@ -49,7 +48,13 @@ export default async function TeamPage({
           </Content>
 
           <Content>
-            <LeagueTableFull groupID={team.group_id} teamID={team.team_id} />
+            {league && leagueTableEntries && (
+              <LeagueTableFull
+                league={league}
+                leagueTableEntries={leagueTableEntries}
+                team={team}
+              />
+            )}
           </Content>
 
           {teamResults.length > 0 && (

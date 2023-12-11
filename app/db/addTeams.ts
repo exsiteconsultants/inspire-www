@@ -1,5 +1,5 @@
 import { JPLTeam } from '@/app/lib/gotSport/types'
-import { db } from '.'
+import { db } from './db'
 
 async function addTeamToDatabase({
   age,

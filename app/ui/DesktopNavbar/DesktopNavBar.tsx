@@ -13,3 +13,5 @@ export const DesktopNavbar: React.FC<{ items: MenuItemData[] }> = ({
     </ul>
   </nav>
 )
+
+export default DesktopNavbar

@@ -71,3 +71,5 @@ export const Header = () => (
     <MobileNavBar items={menuItemsData} />
   </div>
 )
+
+export default Header

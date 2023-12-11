@@ -1,4 +1,5 @@
-import { Team, db } from '@/app/db'
+import { Team } from '@/app/db/types'
+import { db } from '@/app/db/db'
 import { getTeamCrestUrl } from '@/app/lib/gotSport'
 import { put as putBlob, list as listBlobs } from '@vercel/blob'
 

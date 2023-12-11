@@ -1,4 +1,5 @@
-import { TeamAndGroup, db } from '.'
+import { TeamAndGroup } from './types'
+import { db } from './db'
 
 export const getTeamAndGroup = async (
   teamID: number

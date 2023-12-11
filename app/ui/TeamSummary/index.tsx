@@ -1,23 +1,31 @@
+import { AgeGroupData } from '@/app/lib/types'
 import styles from './styles.module.css'
-import { getLastPlayedGame, getNextGame, getTeamAndGroupForAge } from '@/app/db'
-import { LeagueTableSummary, PreviousGame, ScheduledGame } from '@/app/ui'
+import { LeagueTableSummary } from '@/app/ui/LeagueTableSummary'
+import { PreviousGame } from '@/app/ui/PreviousGame'
+import { ScheduledGame } from '@/app/ui/ScheduledGame'
 
-export const TeamSummary: React.FC<{ age: string }> = async ({ age }) => {
-  const team = await getTeamAndGroupForAge(age.toUpperCase())
-
+export const TeamSummary: React.FC<AgeGroupData> = ({
+  lastPlayedGame,
+  league,
+  leagueTableEntries,
+  nextGame,
+  team,
+}) => {
   if (!team) {
     return null
   }
-
-  // Get the last played game
-  const lastPlayedGame = await getLastPlayedGame({ teamID: team.team_id })
-  const nextGame = await getNextGame({ teamID: team.team_id })
 
   return (
     <div className={styles.teamData}>
       {lastPlayedGame && <PreviousGame game={lastPlayedGame} />}
       {nextGame && <ScheduledGame game={nextGame} />}
-      <LeagueTableSummary groupID={team.group_id} teamID={team.team_id} />
+      {league && leagueTableEntries && (
+        <LeagueTableSummary
+          league={league}
+          leagueTableEntries={leagueTableEntries}
+          team={team}
+        />
+      )}
     </div>
   )
 }

@@ -1,18 +1,16 @@
 import Image from 'next/image'
-import { getLeague, getLeagueTable } from '@/app/db'
+import { League, LeagueTableEntryAndTeam, Team } from '@/app/db/types'
 import styles from './styles.module.css'
 
 export const LeagueTableSummary: React.FC<{
-  groupID: number
-  teamID: number
-}> = async ({ groupID, teamID }) => {
-  const league = await getLeague(groupID)
-  const leagueTableEntries = await getLeagueTable(groupID)
-
+  league: League
+  leagueTableEntries: LeagueTableEntryAndTeam[]
+  team: Team
+}> = ({ league, leagueTableEntries, team }) => {
   // Get the poosition for the selected team and only show the team the the 2 teams above and below
   // or 2 teams below or 2 teams above
   const teamPositionIndex = leagueTableEntries.findIndex(
-    (entry) => entry.team_id === teamID
+    (entry) => entry.team_id === team.id
   )
 
   let startIndex = teamPositionIndex - 1
@@ -48,7 +46,7 @@ export const LeagueTableSummary: React.FC<{
           {leagueTableSubset.map((entry) => (
             <tr
               key={`league-position-${entry.position}`}
-              className={entry.team_id === teamID ? styles.ownTeam : ''}
+              className={entry.team_id === team.id ? styles.ownTeam : ''}
             >
               <td data-field="position">{entry.position}</td>
               <td data-field="crest">
@@ -64,7 +62,7 @@ export const LeagueTableSummary: React.FC<{
               </td>
               <td data-field="team">{entry.team}</td>
               <td data-field="played">{entry.played}</td>
-              <td data-field="goal-difference">{entry.goalDifference}</td>
+              <td data-field="goal-difference">{entry.goal_difference}</td>
               <td data-field="points">{entry.points}</td>
             </tr>
           ))}

@@ -1,5 +1,5 @@
 import { JPLLeagueTableEntry } from '@/app/lib/gotSport/types'
-import { db } from '.'
+import { db } from './db'
 
 export async function updateLeagueTable({
   leagueTable,

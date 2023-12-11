@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { getDateString } from '@/app/lib/date'
-import { Result } from '@/app/db'
+import { Result } from '@/app/db/types'
 import styles from './styles.module.css'
 
 export const PreviousGame: React.FC<{

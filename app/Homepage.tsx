@@ -1,12 +1,22 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
-import { Content, TabNav, TeamSummary, ThreeColumnSplit } from '@/app/ui'
+import { useState } from 'react'
+import { AgeGroupData } from '@/app/lib/types'
+import Content from '@/app/ui/Content'
+import { TabNav } from '@/app/ui/TabNav'
+import { TeamSummary } from '@/app/ui/TeamSummary'
+import { ThreeColumnSplit } from '@/app/ui/ThreeColumnSplit'
 import styles from './styles.module.css'
 
-const options = ['u12', 'u13', 'u15', 'u16']
+export const Homepage: React.FC<{
+  ageGroups: string[]
+  ageGroupData: AgeGroupData[]
+}> = ({ ageGroups, ageGroupData }) => {
+  console.log(ageGroupData)
 
-const Home = ({ params }: { params: { age: string } }) => {
-  const age = params.age || 'u12'
+  const [currentAge, setCurrentAge] = useState('U10')
 
   return (
     <main className={styles.homepage}>
@@ -82,33 +92,46 @@ const Home = ({ params }: { params: { age: string } }) => {
         </ThreeColumnSplit>
       </Content>
 
-      <TabNav options={options} selectedTab={age} />
+      <TabNav
+        options={ageGroups}
+        selectedTab={currentAge}
+        setSelectedTab={setCurrentAge}
+      />
 
-      <div className={styles.teamContentWrapper}>
-        <div className={styles.teamContent}>
-          <TeamSummary age={age} />
+      {ageGroupData.map(({ lastPlayedGame, nextGame, team }) => (
+        <div
+          key={team?.id}
+          className={`${styles.teamContentWrapper} ${
+            team?.age !== currentAge ? styles.hidden : ''
+          }`}
+        >
+          <div className={styles.teamContent}>
+            <TeamSummary
+              lastPlayedGame={lastPlayedGame}
+              nextGame={nextGame}
+              team={team}
+            />
 
-          <div className={styles.teamLink}>
-            <Link href={`/team/${age}`}>Find out more</Link>
+            <div className={styles.teamLink}>
+              <Link href={`/team/${team?.age}`}>Find out more</Link>
+            </div>
+
+            <Content>
+              <p>
+                The Inspire Girls Academy provides a platform for young girls
+                passionate about football, aspiring to become professional
+                athletes. Our committed passion to driving success has allowed
+                former, and current players the opportunity in securing
+                full-time contracts at the Brighton FC football academy as well
+                as some of our current players having been selected for the
+                Oxford Town and Reading Emerging Talent Centres which have
+                opened avenues for further opportunities in their football
+                journeys.
+              </p>
+            </Content>
           </div>
-
-          <Content>
-            <p>
-              The Inspire Girls Academy Under 12&apos;s team provides a platform
-              for young girls passionate about football, aspiring to become
-              professional athletes. Our committed passion to driving success
-              has allowed former, and current players the opportunity in
-              securing full-time contracts at the Brighton FC football academy
-              as well as some of our current players having been selected for
-              the Oxford Town and Reading Emerging Talent Centres which have
-              opened avenues for further opportunities in their football
-              journeys.
-            </p>
-          </Content>
         </div>
-      </div>
+      ))}
     </main>
   )
 }
-
-export default Home

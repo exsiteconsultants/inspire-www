@@ -1,4 +1,5 @@
-import { SheduledGameRecord, db } from '.'
+import { SheduledGameRecord } from './types'
+import { db } from './db'
 
 export async function getTeamSchedule({
   teamID,

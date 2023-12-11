@@ -1,4 +1,5 @@
-import { Result, db } from '.'
+import { Result } from './types'
+import { db } from './db'
 
 export async function getTeamResults({
   teamID,

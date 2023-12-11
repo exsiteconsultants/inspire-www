@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { getDateString } from '@/app/lib/date'
-import { SheduledGameRecord } from '@/app/db'
+import { SheduledGameRecord } from '@/app/db/types'
 import styles from './styles.module.css'
 
 export const ScheduledGame: React.FC<{

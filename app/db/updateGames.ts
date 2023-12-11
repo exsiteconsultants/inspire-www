@@ -1,4 +1,4 @@
-import { db } from '.'
+import { db } from './db'
 import { JPLGame } from '../lib/gotSport/types'
 
 async function updateGame({ game }: { game: JPLGame }) {

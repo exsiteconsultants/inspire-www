@@ -145,3 +145,8 @@ export interface SheduledGameRecord {
 }
 
 export type TeamAndGroup = Team & LeagueTeam
+
+export interface LeagueTableEntryAndTeam extends LeagueTableEntry {
+  team: string
+  crest: string | null
+}

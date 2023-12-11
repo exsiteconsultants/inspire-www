@@ -1,5 +1,8 @@
 import Markdown from 'react-markdown'
-import { Content, ContentHero, Grid, ImageCard } from '@/app/ui'
+import Content from '@/app/ui/Content'
+import ContentHero from '@/app/ui/ContentHero'
+import Grid from '@/app/ui/Grid'
+import ImageCard from '@/app/ui/ImageCard'
 
 export interface StaffMember {
   name: string
