@@ -2,13 +2,11 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 import { MenuItemData } from '@/app/lib/types'
-import { MobileMenuItems } from './MobileMenuItems'
+import MobileMenuItems from './MobileMenuItems'
 import styles from './styles.module.css'
 import { usePathname } from 'next/navigation'
 
-export const MobileNavBar: React.FC<{ items: MenuItemData[] }> = ({
-  items,
-}) => {
+const MobileNavBar: React.FC<{ items: MenuItemData[] }> = ({ items }) => {
   const depthLevel = 0
   const [showMenu, setShowMenu] = useState(false)
   let ref = useRef<HTMLUListElement>(null)
@@ -57,3 +55,5 @@ export const MobileNavBar: React.FC<{ items: MenuItemData[] }> = ({
     </nav>
   )
 }
+
+export default MobileNavBar

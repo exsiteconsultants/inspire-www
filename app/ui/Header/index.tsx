@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './styles.module.css'
-import { DesktopNavbar } from '../DesktopNavbar/DesktopNavBar'
-import { MobileNavBar } from '../MobileNavbar/MobileNavBar'
+import DesktopNavbar from '../DesktopNavbar/DesktopNavBar'
+import MobileNavBar from '../MobileNavbar/MobileNavBar'
 
 const menuItemsData = [
   {

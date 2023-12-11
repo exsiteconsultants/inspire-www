@@ -3,7 +3,7 @@ import { getDateString } from '@/app/lib/date'
 import { Result } from '@/app/db/types'
 import styles from './styles.module.css'
 
-export const PreviousGame: React.FC<{
+const PreviousGame: React.FC<{
   game: Result
   latestResult?: boolean
 }> = ({ game, latestResult }) => (
@@ -39,3 +39,5 @@ export const PreviousGame: React.FC<{
     </div>
   </article>
 )
+
+export default PreviousGame

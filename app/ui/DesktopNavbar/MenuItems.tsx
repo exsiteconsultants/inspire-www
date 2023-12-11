@@ -6,7 +6,7 @@ import { Dropdown } from './Dropdown'
 import { MenuItemData } from '../../lib/types'
 import styles from './styles.module.css'
 
-export const MenuItems: React.FC<{
+const MenuItems: React.FC<{
   items: MenuItemData
   depthLevel: number
 }> = ({ items, depthLevel }) => {
@@ -92,3 +92,5 @@ export const MenuItems: React.FC<{
     </li>
   )
 }
+
+export default MenuItems

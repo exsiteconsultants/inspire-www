@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import styles from './styles.module.css'
 
-export const TabNav: React.FC<{
+const TabNav: React.FC<{
   options: string[]
   selectedTab: string
   setSelectedTab: React.Dispatch<React.SetStateAction<string>>
@@ -36,3 +36,5 @@ export const TabNav: React.FC<{
     </ul>
   )
 }
+
+export default TabNav

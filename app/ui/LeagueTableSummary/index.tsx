@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { League, LeagueTableEntryAndTeam, TeamAndGroup } from '@/app/db/types'
 import styles from './styles.module.css'
 
-export const LeagueTableSummary: React.FC<{
+const LeagueTableSummary: React.FC<{
   league: League
   leagueTableEntries: LeagueTableEntryAndTeam[]
   team: TeamAndGroup
@@ -13,19 +13,26 @@ export const LeagueTableSummary: React.FC<{
     (entry) => entry.team_id === team.team_id
   )
 
-  let startIndex = teamPositionIndex - 1
-  let endIndex = teamPositionIndex + 1
+  let startIndex: number
+  let endIndex: number
 
   if (teamPositionIndex === 0) {
-    endIndex = teamPositionIndex + 2
-  }
-
-  if (teamPositionIndex === leagueTableEntries.length - 1) {
-    startIndex = teamPositionIndex - 2
+    startIndex = 0
+    endIndex = 2
+  } else if (teamPositionIndex === leagueTableEntries.length - 1) {
+    startIndex = leagueTableEntries.length - 4
+    endIndex = leagueTableEntries.length - 1
+  } else {
+    startIndex = teamPositionIndex - 1
+    endIndex = teamPositionIndex + 1
   }
 
   // Get the subset of the league table entries
   const leagueTableSubset = leagueTableEntries.slice(startIndex, endIndex + 1)
+
+  if (team.age === 'U13') {
+    console.log('leagueTableSubset', leagueTableSubset)
+  }
 
   return (
     <div data-testid="league-table-summary" className={styles.leagueTable}>
@@ -71,3 +78,5 @@ export const LeagueTableSummary: React.FC<{
     </div>
   )
 }
+
+export default LeagueTableSummary

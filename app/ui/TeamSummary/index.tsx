@@ -1,10 +1,10 @@
 import { AgeGroupData } from '@/app/lib/types'
 import styles from './styles.module.css'
-import { LeagueTableSummary } from '@/app/ui/LeagueTableSummary'
-import { PreviousGame } from '@/app/ui/PreviousGame'
-import { ScheduledGame } from '@/app/ui/ScheduledGame'
+import LeagueTableSummary from '@/app/ui/LeagueTableSummary'
+import PreviousGame from '@/app/ui/PreviousGame'
+import ScheduledGame from '@/app/ui/ScheduledGame'
 
-export const TeamSummary: React.FC<AgeGroupData> = ({
+const TeamSummary: React.FC<AgeGroupData> = ({
   lastPlayedGame,
   league,
   leagueTableEntries,
@@ -29,3 +29,5 @@ export const TeamSummary: React.FC<AgeGroupData> = ({
     </div>
   )
 }
+
+export default TeamSummary

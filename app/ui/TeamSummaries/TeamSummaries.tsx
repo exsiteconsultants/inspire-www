@@ -5,11 +5,11 @@ import { useState } from 'react'
 import Markdown from 'react-markdown'
 import { AgeGroupData } from '@/app/lib/types'
 import Content from '@/app/ui/Content'
-import { TabNav } from '@/app/ui/TabNav'
-import { TeamSummary } from '@/app/ui/TeamSummary'
+import TabNav from '@/app/ui/TabNav'
+import TeamSummary from '@/app/ui/TeamSummary'
 import styles from './styles.module.css'
 
-export const TeamSummaries: React.FC<{
+const TeamSummaries: React.FC<{
   ageGroups: string[]
   ageGroupData: AgeGroupData[]
 }> = ({ ageGroups, ageGroupData }) => {
@@ -56,3 +56,5 @@ export const TeamSummaries: React.FC<{
     </>
   )
 }
+
+export default TeamSummaries
