@@ -6,6 +6,7 @@
   justify-content: space-between;
   z-index: 10;
   position: fixed;
+  top: 0;
 }
 
 /* Mobile version of top nav */

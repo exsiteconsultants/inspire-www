@@ -14,6 +14,9 @@ import LeagueTableFull from '@/app/ui/LeagueTableFull'
 import PreviousGame from '@/app/ui/PreviousGame'
 import ScheduledGame from '@/app/ui/ScheduledGame'
 import styles from './styles.module.css'
+import getTeamStaff from '@/app/db/getTeamStaff'
+import TeamStaffMemberCard from '@/app/ui/TeamStaffMemberCard'
+import Link from 'next/link'
 
 export default async function TeamPage({
   params,
@@ -33,6 +36,7 @@ export default async function TeamPage({
   const teamSchedule = await getTeamSchedule({ teamID: team.team_id })
   const league = await getLeague(team.group_id)
   const leagueTableEntries = await getLeagueTable(team.group_id)
+  const staff = await getTeamStaff(params.age)
 
   return (
     <div className={styles.wrapper}>
@@ -86,6 +90,15 @@ export default async function TeamPage({
               <PreviousGame game={lastPlayedGame} latestResult />
             )}
             {nextGame && <ScheduledGame game={nextGame} nextGame />}
+          </Content>
+
+          <Content compact>
+            <h3 className={styles.contentTitle}>Staff</h3>
+            <ul className={styles.staffList}>
+              {staff.map((staff) => (
+                <TeamStaffMemberCard key={staff.id} staff={staff} />
+              ))}
+            </ul>
           </Content>
         </SubContent>
       </SplitContent>
