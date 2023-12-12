@@ -7,16 +7,15 @@ import getNextGame from '@/app/db/getNextGame'
 import getTeamAndGroupForAge from '@/app/db/getTeamAndGroupForAge'
 import getTeamResults from '@/app/db/getTeamResults'
 import getTeamSchedule from '@/app/db/getTeamSchedule'
+import getTeamStaff from '@/app/db/getTeamStaff'
 import { SplitContent, MainContent, SubContent } from '@/app/ui/SplitContent'
 import Content from '@/app/ui/Content'
 import ContentHero from '@/app/ui/ContentHero'
 import LeagueTableFull from '@/app/ui/LeagueTableFull'
 import PreviousGame from '@/app/ui/PreviousGame'
 import ScheduledGame from '@/app/ui/ScheduledGame'
-import styles from './styles.module.css'
-import getTeamStaff from '@/app/db/getTeamStaff'
 import TeamStaffMemberCard from '@/app/ui/TeamStaffMemberCard'
-import Link from 'next/link'
+import styles from './styles.module.css'
 
 export default async function TeamPage({
   params,
