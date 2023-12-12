@@ -1,5 +1,7 @@
+import { revalidatePath } from 'next/cache'
 import addStaff, { AddStaffParams } from '@/app/db/addStaff'
-import { NewStaff } from '@/app/db/types'
+
+export const dynamic = 'force-dynamic' // defaults to force-static
 
 const coaches: AddStaffParams[] = [
   {
@@ -172,6 +174,8 @@ Darren has more recently taken on the role as treasurer for this club.`,
 ]
 
 export async function GET() {
+  console.log('------------------- ADDING STAFF -------------------')
+
   try {
     for (const staff of coaches) {
       await addStaff(staff)
@@ -180,6 +184,15 @@ export async function GET() {
     for (const staff of committee) {
       await addStaff(staff)
     }
+
+    // Invalidate the cache for the home page and the team pages
+
+    revalidatePath('/staff/coaches', 'page')
+    revalidatePath('/staff/committee', 'page')
+    revalidatePath('/team/[id]', 'page')
+
+    console.log('------------------- ADDING STAFF:DONE -------------------')
+
     return Response.json({ done: true })
   } catch (error) {
     return Response.json({ error })

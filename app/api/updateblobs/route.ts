@@ -8,6 +8,8 @@ export const dynamic = 'force-dynamic' // defaults to force-static
 const crestImagePrefix = 'images/crests'
 
 export async function GET() {
+  console.log('------------------- UPDATING BLOBS -------------------')
+
   const db = getDB()
 
   // Get a list of the teams and associated crest urls
@@ -39,6 +41,8 @@ export async function GET() {
         .execute()
     }
   }
+
+  console.log('------------------- UPDATING BLOB:DONE -------------------')
 
   return Response.json({ done: true })
 }

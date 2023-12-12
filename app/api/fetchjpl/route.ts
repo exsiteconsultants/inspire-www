@@ -8,6 +8,8 @@ import { parseTeamPage } from '@/app/lib/gotSport'
 export const dynamic = 'force-dynamic' // defaults to force-static
 
 export async function GET() {
+  console.log('------------------- FETCHING JPL DATA -------------------')
+
   try {
     const db = getDB()
     const teams = await db
@@ -34,12 +36,15 @@ export async function GET() {
       })
     )
 
-    console.log('Done')
+    console.log('------------------- INVALIDATING CACHE -------------------')
 
     // Invalidate the cache for the home page and the team pages
     revalidatePath('/', 'page')
-    revalidatePath('/[id]', 'page')
-    revalidatePath('/teamtest/[id]', 'page')
+    revalidatePath('/team/[id]', 'page')
+
+    console.log(
+      '------------------- FETCHING JPL DATA:DONE -------------------'
+    )
 
     return Response.json({ done: true })
   } catch (error) {
