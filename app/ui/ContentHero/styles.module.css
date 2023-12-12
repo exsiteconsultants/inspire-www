@@ -1,13 +1,12 @@
 .contentHero {
   position: relative;
-  min-height: 500px;
-  height: 30vh;
+  min-height: 450px;
+  height: 25vh;
 }
 
 @media screen and (max-width: 809px) {
   .contentHero {
-    min-height: 400px;
-    height: 30vh;
+    min-height: 350px;
   }
 }
 

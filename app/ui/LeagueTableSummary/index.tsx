@@ -30,10 +30,6 @@ const LeagueTableSummary: React.FC<{
   // Get the subset of the league table entries
   const leagueTableSubset = leagueTableEntries.slice(startIndex, endIndex + 1)
 
-  if (team.age === 'U13') {
-    console.log('leagueTableSubset', leagueTableSubset)
-  }
-
   return (
     <div data-testid="league-table-summary" className={styles.leagueTable}>
       <h4 className={styles.title}>{league?.name}</h4>

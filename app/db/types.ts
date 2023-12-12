@@ -82,9 +82,8 @@ export type TeamUpdate = Updateable<TeamTable>
 
 export interface TeamStaffTable {
   id: Generated<number>
-  team_id: number
-  role: string
   staff_id: number
+  team_id: number
 }
 
 export type TeamStaff = Selectable<TeamStaffTable>

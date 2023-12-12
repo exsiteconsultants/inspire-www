@@ -32,11 +32,19 @@ const menuItemsData = [
   },
   {
     title: 'Staff',
-    url: '/staff',
+    submenu: [
+      {
+        title: 'Coaches',
+        url: '/staff/coaches',
+      },
+      {
+        title: 'Committee',
+        url: '/staff/committee',
+      },
+    ],
   },
   {
     title: 'About',
-    url: '/about',
     submenu: [
       {
         title: 'IGA History',

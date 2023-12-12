@@ -21,8 +21,8 @@ body {
   font-family: Effra, sans-serif;
   font-family: var(--primary_font, 'Effra', sans-serif);
   font-size: 17px;
-  margin: 0;
   padding: 0;
+  margin: 2rem 0 0 0;
   color: var(--color-white);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;

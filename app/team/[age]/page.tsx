@@ -7,12 +7,14 @@ import getNextGame from '@/app/db/getNextGame'
 import getTeamAndGroupForAge from '@/app/db/getTeamAndGroupForAge'
 import getTeamResults from '@/app/db/getTeamResults'
 import getTeamSchedule from '@/app/db/getTeamSchedule'
+import getTeamStaff from '@/app/db/getTeamStaff'
 import { SplitContent, MainContent, SubContent } from '@/app/ui/SplitContent'
 import Content from '@/app/ui/Content'
 import ContentHero from '@/app/ui/ContentHero'
 import LeagueTableFull from '@/app/ui/LeagueTableFull'
 import PreviousGame from '@/app/ui/PreviousGame'
 import ScheduledGame from '@/app/ui/ScheduledGame'
+import TeamStaffMemberCard from '@/app/ui/TeamStaffMemberCard'
 import styles from './styles.module.css'
 
 export default async function TeamPage({
@@ -33,6 +35,7 @@ export default async function TeamPage({
   const teamSchedule = await getTeamSchedule({ teamID: team.team_id })
   const league = await getLeague(team.group_id)
   const leagueTableEntries = await getLeagueTable(team.group_id)
+  const staff = await getTeamStaff(params.age)
 
   return (
     <div className={styles.wrapper}>
@@ -86,6 +89,15 @@ export default async function TeamPage({
               <PreviousGame game={lastPlayedGame} latestResult />
             )}
             {nextGame && <ScheduledGame game={nextGame} nextGame />}
+          </Content>
+
+          <Content compact>
+            <h3 className={styles.contentTitle}>Staff</h3>
+            <ul className={styles.staffList}>
+              {staff.map((staff) => (
+                <TeamStaffMemberCard key={staff.id} staff={staff} />
+              ))}
+            </ul>
           </Content>
         </SubContent>
       </SplitContent>
