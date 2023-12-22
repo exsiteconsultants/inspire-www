@@ -1,9 +1,9 @@
 import { revalidatePath } from 'next/cache'
 import { getDB } from '@/app/db/db'
 import addTeams from '@/app/db/addTeams'
-import updateGames from '@/app/db/updateGames'
 import updateLeagueTable from '@/app/db/updateLeagueTable'
 import { parseTeamPage } from '@/app/lib/gotSport'
+import updateGames from '@/app/db/updateGames'
 
 export const dynamic = 'force-dynamic' // defaults to force-static
 
@@ -12,12 +12,24 @@ export async function GET() {
 
   try {
     const db = getDB()
+
+    // Get a list of teams that belong to a squad and are part of a league
     const teams = await db
       .selectFrom('team')
-      .innerJoin('league_team', 'team.id', 'league_team.team_id')
-      .innerJoin('league', 'league_team.group_id', 'league.group_id')
-      .select(['team.id', 'team.age', 'league.event_id', 'league.group_id'])
-      .where('team.isownteam', '=', true)
+      .innerJoin('group', 'team.group_id', 'group.id')
+      .select([
+        'team.id',
+        'team.name',
+        'team.group_id',
+        'group.event_id',
+        'group.age',
+      ])
+      .where((eb) =>
+        eb.and([
+          eb('group.cup', '=', false),
+          eb('team.squad_id', 'is not', null),
+        ])
+      )
       .execute()
 
     await Promise.all(
@@ -29,9 +41,10 @@ export async function GET() {
         })
 
         await addTeams({ teams: data.teams, age: team.age })
+
         await Promise.all([
           updateLeagueTable({ leagueTable: data.leagueTable }),
-          updateGames({ games: data.games }),
+          updateGames({ games: data.games, groupID: team.group_id }),
         ])
       })
     )
@@ -40,7 +53,7 @@ export async function GET() {
 
     // Invalidate the cache for the home page and the team pages
     revalidatePath('/', 'page')
-    revalidatePath('/team/[id]', 'page')
+    revalidatePath('/squad/[id]', 'page')
 
     console.log(
       '------------------- FETCHING JPL DATA:DONE -------------------'

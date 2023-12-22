@@ -1,40 +1,7 @@
 import { JPLTeam } from '@/app/lib/gotSport/types'
 import { getDB } from './db'
 
-async function addTeamToDatabase({
-  age,
-  team,
-}: {
-  age: string
-  team: JPLTeam
-}) {
-  // Add the team
-  try {
-    const db = getDB()
-    await db
-      .insertInto('team')
-      .values({
-        id: team.teamID,
-        name: team.name,
-        age,
-      })
-      .execute()
-
-    // Join the team to the league and group
-    await db
-      .insertInto('league_team')
-      .values({
-        group_id: team.groupID,
-        team_id: team.teamID,
-      })
-      .execute()
-  } catch (e) {
-    console.error(e)
-  }
-}
-
 export default async function addTeams({
-  age,
   teams,
 }: {
   age: string
@@ -46,13 +13,21 @@ export default async function addTeams({
     for (const team of teams) {
       const dbTeams = await db
         .selectFrom('team')
+        .select(['id', 'name'])
         .where('id', '=', team.teamID)
         .execute()
 
       // If the team doesn't exist in the database then add it.
       if (Number(dbTeams.length) === 0) {
         console.log('Add Team')
-        await addTeamToDatabase({ age, team })
+        await db
+          .insertInto('team')
+          .values({
+            id: team.teamID,
+            name: team.name,
+            group_id: team.groupID,
+          })
+          .execute()
       }
     }
   } catch (e) {

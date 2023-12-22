@@ -24,29 +24,29 @@ const TeamSummaries: React.FC<{
       />
 
       {ageGroupData.map(
-        ({ lastPlayedGame, league, leagueTableEntries, nextGame, team }) => (
+        ({ lastPlayedGame, group, groupTableEntries, nextGame, squad }) => (
           <div
-            key={team?.id}
+            key={squad?.id}
             className={`${styles.teamContentWrapper} ${
-              team?.age !== currentAge ? styles.hidden : ''
+              squad?.age !== currentAge ? styles.hidden : ''
             }`}
           >
             <div className={styles.teamContent}>
               <TeamSummary
                 lastPlayedGame={lastPlayedGame}
-                league={league}
-                leagueTableEntries={leagueTableEntries}
+                group={group}
+                groupTableEntries={groupTableEntries}
                 nextGame={nextGame}
-                team={team}
+                squad={squad}
               />
 
-              <Link className={styles.teamLink} href={`/team/${team?.age}`}>
+              <Link className={styles.teamLink} href={`/squad/${squad?.age}`}>
                 Find out more
               </Link>
 
-              {team && team.bio && team.bio !== 'tbd' && (
+              {squad && squad.bio && squad.bio !== 'tbd' && (
                 <Content>
-                  <Markdown>{team.bio}</Markdown>
+                  <Markdown>{squad.bio}</Markdown>
                 </Content>
               )}
             </div>

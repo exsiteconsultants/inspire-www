@@ -1,4 +1,10 @@
-import { League, LeagueTableEntryAndTeam, Result, SheduledGameRecord, TeamAndGroup } from "@/app/db/types"
+import {
+  Group,
+  GroupTableEntryAndTeam,
+  Result,
+  SheduledGameRecord,
+  SquadAndGroup,
+} from '@/app/db/types'
 
 export interface MenuItemData {
   title: string
@@ -8,8 +14,8 @@ export interface MenuItemData {
 
 export interface AgeGroupData {
   lastPlayedGame?: Result | null
-  league?: League | null
-  leagueTableEntries?: LeagueTableEntryAndTeam[]
+  group?: Group | null
+  groupTableEntries?: GroupTableEntryAndTeam[]
   nextGame?: SheduledGameRecord | null
-  team: TeamAndGroup | null
+  squad: SquadAndGroup | null
 }

@@ -1,10 +1,10 @@
 import { getDB } from './db'
 
-export default async function getLeague(groupID: number) {
+export default async function getGroup(groupID: number) {
   const db = getDB()
   const league = await db
-    .selectFrom('league')
-    .where('group_id', '=', groupID)
+    .selectFrom('group')
+    .where('id', '=', groupID)
     .selectAll()
     .executeTakeFirst()
 

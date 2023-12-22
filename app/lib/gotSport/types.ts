@@ -30,9 +30,11 @@ export interface JPLTeam {
 export interface JPLGame {
   groupID: number
   awayTeamId: number
+  awayTeamName: string
   awayTeamScore?: number
   dateTime: Date
   homeTeamId: number
+  homeTeamName: string
   homeTeamScore?: number
   location?: string
   gameNumber: number

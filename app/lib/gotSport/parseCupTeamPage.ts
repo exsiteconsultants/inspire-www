@@ -1,12 +1,9 @@
 import jsdom from 'jsdom'
-import { JPLGame, JPLTeam, JPLTeamInput, JPLLeagueTableEntry } from './types'
+import { JPLGame, JPLTeam, JPLTeamInput } from './types'
 
 const { JSDOM } = jsdom
 
 const gotoSportRoolUrl = 'https://system.gotsport.com'
-
-const leagueTableRowsSelector =
-  '#app-main > div:nth-child(1) > section > div > div:nth-child(3) > div > div > div > div:nth-child(6) > div > div.panel.panel-gs-custom > div.panel-body > div > div > div > table > tbody > tr'
 
 export async function getTeamCrestUrl({
   eventID,
@@ -15,7 +12,8 @@ export async function getTeamCrestUrl({
   eventID: number
   teamID: number
 }) {
-  const logoCSSPath = '#app-main .img-responsive'
+  const logoCSSPath =
+    '#app-main > div:nth-child(1) > section > div > div:nth-child(3) > div > div > div > div:nth-child(1) > div > div > div.col-md-2.col-xs-3 > img'
 
   const teamPage = await getTeamPage({ eventID, teamID })
   const dom = new JSDOM(teamPage)
@@ -50,36 +48,36 @@ async function getTeamPage({
  * the league table and then go fetch their crest url
  */
 async function getTeams({
-  document,
+  games,
   eventID,
   groupID,
 }: {
-  document: Document
+  games: JPLGame[]
   eventID: number
   groupID: number
 }): Promise<JPLTeam[]> {
-  //Get the table rows that contain the league table
+  const teamsHash: Record<number, JPLTeam> = {}
 
-  const leagueTableRows = document.querySelectorAll(leagueTableRowsSelector)
-
-  const teams = Array.from(leagueTableRows).map((row) => {
-    const cells = row.querySelectorAll('td')
-    const href = cells[1]?.querySelector('a')?.getAttribute('href') || ''
-
-    const teamID = parseInt(href?.split('=')[1], 10)
-    const name =
-      cells[1]?.querySelector('a')?.textContent?.replace('\n', '').trim() || ''
-
-    return {
-      teamID,
-      eventID,
-      groupID,
-      name,
+  games.forEach((game) => {
+    teamsHash[game.awayTeamId] = {
+      teamID: game.awayTeamId,
+      eventID: eventID,
+      groupID: groupID,
+      name: game.awayTeamName,
       crest: '',
-    } as JPLTeam
+    }
+
+    teamsHash[game.homeTeamId] = {
+      teamID: game.homeTeamId,
+      eventID: eventID,
+      groupID: groupID,
+      name: game.homeTeamName,
+      crest: '',
+    }
   })
 
-  return teams
+  // Now turn it into a unique list of teams
+  return Object.values(teamsHash)
 }
 
 /**
@@ -96,9 +94,17 @@ function parseGames({
 }): JPLGame[] {
   const gamesSectionSelector =
     '#app-main > div:nth-child(1) > section > div > div:nth-child(3) > div > div > div > div:nth-child(6) > div > div.row > div'
+  const gamesSectionSelectorAlt =
+    '#app-main > div:nth-child(1) > section > div > div:nth-child(2) > div > div > div > div:nth-child(6) > div > div.row > div'
+
   const gameSectionSelector = '.hidden-xs'
 
-  const gamesSection = document.querySelector(gamesSectionSelector)
+  let gamesSection = document.querySelector(gamesSectionSelector)
+
+  // Some teams have a bug in the Gosport page so need an alternative selector
+  if (!gamesSection) {
+    gamesSection = document.querySelector(gamesSectionSelectorAlt)
+  }
 
   if (!gamesSection) {
     return []
@@ -178,87 +184,44 @@ function parseGames({
     return game
   })
 
-  return games
-}
-
-/**
- * Parse the team page to get a list of teams in the league from
- * the league table
- */
-function parseLeagueTable({
-  document,
-  groupID,
-}: {
-  document: Document
-  groupID: number
-}): JPLLeagueTableEntry[] {
-  //Get the table rows that contain the league table
-  const leagueTableRows = document.querySelectorAll(leagueTableRowsSelector)
-
-  const results = Array.from(leagueTableRows)
-    .filter((row) => {
-      const cells = row.querySelectorAll('td')
-      return cells !== null && cells.length > 0
-    })
-    .map((row): JPLLeagueTableEntry => {
-      const cells = row.querySelectorAll('td')
-
-      const position = parseInt(cells[0].textContent || '', 10)
-
-      const href = cells[1].querySelector('a')!.getAttribute('href')
-      const teamID = parseInt(href!.split('=')[1], 10)
-      const played = parseInt(cells[2].textContent || '', 10)
-      const won = parseInt(cells[3].textContent || '', 10)
-      const lost = parseInt(cells[4].textContent || '', 10)
-      const drawn = parseInt(cells[5].textContent || '', 10)
-      const goalsFor = parseInt(cells[6].textContent || '', 10)
-      const goalsAgainst = parseInt(cells[7].textContent || '', 10)
-      const goalDifference = parseInt(cells[8].textContent || '', 10)
-      const points = parseInt(cells[9].textContent || '', 10)
-
-      return {
-        groupID,
-        teamID,
-        position,
-        played,
-        won,
-        lost,
-        drawn,
-        goalsFor,
-        goalsAgainst,
-        goalDifference,
-        points,
-      }
-    })
-
-  return results
+  return games.filter(
+    (game) =>
+      game.awayTeamId !== undefined &&
+      game.homeTeamId !== undefined &&
+      !Number.isNaN(game.awayTeamId) &&
+      !Number.isNaN(game.homeTeamId)
+  )
 }
 
 /**
  * Parse the team page to get the league table, schedule and teams
  */
-export async function parseTeamPage(sourceTeam: JPLTeamInput) {
+export async function parseCupTeamPage(sourceTeam: JPLTeamInput) {
   const { eventID, groupID, teamID } = sourceTeam
+
+  if (teamID === 1840614) {
+    console.log('here')
+  }
 
   // Fetch the team page from the JPL Warrior site and parse it into a HTML Document that can be manipulated
   const html = await getTeamPage({ eventID, teamID })
   const dom = new JSDOM(html)
   const document = dom.window.document
 
-  // Extract the league table from the page
-  const leagueTable = parseLeagueTable({ document, groupID })
-
   // Parse all the games in the schedule
   const games = parseGames({ document, teamID, groupID })
 
   // Get all the teams and their associated Crests URL
-  const teams = await getTeams({ document, eventID, groupID })
+  const teams = await getTeams({
+    games,
+    eventID,
+    groupID,
+  })
 
   return {
-    leagueTable,
     games,
     teams,
   }
 }
 
-export default parseTeamPage
+export default parseCupTeamPage

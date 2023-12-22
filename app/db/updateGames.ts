@@ -1,36 +1,32 @@
 import { getDB } from './db'
-import { JPLGame } from '../lib/gotSport/types'
+import { JPLGame } from '@/app/lib/gotSport/types'
+import { NewGame } from './types'
 
-async function updateGame({ game }: { game: JPLGame }) {
+export default async function updateGames({
+  games,
+  groupID,
+}: {
+  games: JPLGame[]
+  groupID: number
+}) {
+  // Delete all games for the group
   const db = getDB()
-  await db
-    .deleteFrom('game')
-    .where((eb) =>
-      eb.and([
-        eb('group_id', '=', game.groupID),
-        eb('game_number', '=', game.gameNumber),
-      ])
-    )
-    .execute()
 
-  // Insert the new Game/Fixture into the db
-  await db
-    .insertInto('game')
-    .values({
-      group_id: game.groupID,
-      game_number: game.gameNumber,
-      date: game.dateTime,
-      location: game.location,
-      home_team_id: game.homeTeamId,
-      home_team_score: game.homeTeamScore,
-      away_team_id: game.awayTeamId,
-      away_team_score: game.awayTeamScore,
-    })
-    .execute()
-}
+  const dbGames: NewGame[] = games.map((game) => ({
+    game_number: game.gameNumber,
+    date: game.dateTime,
+    group_id: game.groupID,
+    home_team_id: game.homeTeamId,
+    home_team_score:
+      game.homeTeamScore === undefined ? null : game.homeTeamScore,
+    away_team_id: game.awayTeamId,
+    away_team_score:
+      game.awayTeamScore === undefined ? null : game.awayTeamScore,
+    location: game.location || null,
+  }))
 
-export default async function updateGames({ games }: { games: JPLGame[] }) {
-  const start = Date.now()
-  await Promise.all(games.map((game) => updateGame({ game })))
-  console.log('Updating games took', Date.now() - start, 'ms')
+  await db.deleteFrom('game').where('group_id', '=', groupID).execute()
+
+  // Insert all the new game data for the group
+  await db.insertInto('game').values(dbGames).execute()
 }
