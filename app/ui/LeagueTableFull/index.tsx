@@ -1,14 +1,14 @@
 import Image from 'next/image'
-import { League, LeagueTableEntryAndTeam, Team } from '@/app/db/types'
 import styles from './styles.module.css'
+import { Group, GroupTableEntryAndTeam, SquadAndGroup } from '@/app/db/types'
 
 export const LeagueTableFull: React.FC<{
-  league: League
-  leagueTableEntries: LeagueTableEntryAndTeam[]
-  team: Team
-}> = ({ league, leagueTableEntries, team }) => (
+  group: Group
+  groupTableEntries: GroupTableEntryAndTeam[]
+  squad: SquadAndGroup
+}> = ({ group, groupTableEntries, squad }) => (
   <div data-testid="league-table-summary" className={styles.leagueTable}>
-    <h4 className={styles.title}>{league?.name}</h4>
+    <h4 className={styles.title}>{group?.name}</h4>
     <table className={styles.table} cellSpacing={0}>
       <thead>
         <tr>
@@ -27,10 +27,10 @@ export const LeagueTableFull: React.FC<{
       </thead>
 
       <tbody>
-        {leagueTableEntries.map((entry) => (
+        {groupTableEntries.map((entry) => (
           <tr
             key={entry.position}
-            className={entry.team_id === team.id ? styles.ownTeam : ''}
+            className={entry.team_id === squad.team_id ? styles.ownTeam : ''}
           >
             <td data-field="position">{entry.position}</td>
             <td data-field="crest">

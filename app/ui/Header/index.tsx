@@ -14,19 +14,19 @@ const menuItemsData = [
     submenu: [
       {
         title: 'U12',
-        url: '/team/u12',
+        url: '/squad/u12',
       },
       {
         title: 'U13',
-        url: '/team/u13',
+        url: '/squad/u13',
       },
       {
         title: 'U15',
-        url: '/team/u15',
+        url: '/squad/u15',
       },
       {
         title: 'U16',
-        url: '/team/u16',
+        url: '/squad/u16',
       },
     ],
   },

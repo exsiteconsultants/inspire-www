@@ -1,16 +1,16 @@
 import Image from 'next/image'
-import { League, LeagueTableEntryAndTeam, TeamAndGroup } from '@/app/db/types'
+import { Group, GroupTableEntryAndTeam, SquadAndGroup } from '@/app/db/types'
 import styles from './styles.module.css'
 
 const LeagueTableSummary: React.FC<{
-  league: League
-  leagueTableEntries: LeagueTableEntryAndTeam[]
-  team: TeamAndGroup
-}> = ({ league, leagueTableEntries, team }) => {
+  group: Group
+  groupTableEntries: GroupTableEntryAndTeam[]
+  squad: SquadAndGroup
+}> = ({ group, groupTableEntries, squad }) => {
   // Get the poosition for the selected team and only show the team the the 2 teams above and below
   // or 2 teams below or 2 teams above
-  const teamPositionIndex = leagueTableEntries.findIndex(
-    (entry) => entry.team_id === team.team_id
+  const teamPositionIndex = groupTableEntries.findIndex(
+    (entry) => entry.team_id === squad.team_id
   )
 
   let startIndex: number
@@ -19,20 +19,20 @@ const LeagueTableSummary: React.FC<{
   if (teamPositionIndex === 0) {
     startIndex = 0
     endIndex = 2
-  } else if (teamPositionIndex === leagueTableEntries.length - 1) {
-    startIndex = leagueTableEntries.length - 4
-    endIndex = leagueTableEntries.length - 1
+  } else if (teamPositionIndex === groupTableEntries.length - 1) {
+    startIndex = groupTableEntries.length - 4
+    endIndex = groupTableEntries.length - 1
   } else {
     startIndex = teamPositionIndex - 1
     endIndex = teamPositionIndex + 1
   }
 
   // Get the subset of the league table entries
-  const leagueTableSubset = leagueTableEntries.slice(startIndex, endIndex + 1)
+  const leagueTableSubset = groupTableEntries.slice(startIndex, endIndex + 1)
 
   return (
     <div data-testid="league-table-summary" className={styles.leagueTable}>
-      <h4 className={styles.title}>{league?.name}</h4>
+      <h4 className={styles.title}>{group?.name}</h4>
       <table className={styles.table} cellSpacing={0}>
         <thead>
           <tr>
@@ -49,7 +49,7 @@ const LeagueTableSummary: React.FC<{
           {leagueTableSubset.map((entry) => (
             <tr
               key={`league-position-${entry.position}`}
-              className={entry.team_id === team.team_id ? styles.ownTeam : ''}
+              className={entry.team_id === squad.team_id ? styles.ownTeam : ''}
             >
               <td data-field="position">{entry.position}</td>
               <td data-field="crest">

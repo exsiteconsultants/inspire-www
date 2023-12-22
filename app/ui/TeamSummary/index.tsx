@@ -6,12 +6,12 @@ import ScheduledGame from '@/app/ui/ScheduledGame'
 
 const TeamSummary: React.FC<AgeGroupData> = ({
   lastPlayedGame,
-  league,
-  leagueTableEntries,
+  group,
+  groupTableEntries,
   nextGame,
-  team,
+  squad,
 }) => {
-  if (!team) {
+  if (!squad) {
     return null
   }
 
@@ -19,11 +19,11 @@ const TeamSummary: React.FC<AgeGroupData> = ({
     <div className={styles.teamData}>
       {lastPlayedGame && <PreviousGame game={lastPlayedGame} />}
       {nextGame && <ScheduledGame game={nextGame} />}
-      {league && leagueTableEntries && (
+      {group && groupTableEntries && (
         <LeagueTableSummary
-          league={league}
-          leagueTableEntries={leagueTableEntries}
-          team={team}
+          group={group}
+          groupTableEntries={groupTableEntries}
+          squad={squad}
         />
       )}
     </div>

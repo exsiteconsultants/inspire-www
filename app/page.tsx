@@ -1,9 +1,9 @@
 import Image from 'next/image'
+import getSquadAndGroupForAge from '@/app/db/getSquadAndGroupForAge'
 import getLastPlayedGame from '@/app/db/getLastGame'
-import getLeague from '@/app/db/getLeague'
-import getLeagueTable from '@/app/db/getLeagueTable'
 import getNextGame from '@/app/db/getNextGame'
-import getTeamAndGroupForAge from '@/app/db/getTeamAndGroupForAge'
+import getGroup from '@/app/db/getGroup'
+import getGroupTable from '@/app/db/getGroupTable'
 import { AgeGroupData } from '@/app/lib/types'
 import Content from '@/app/ui/Content'
 import TeamSummaries from '@/app/ui/TeamSummaries/TeamSummaries'
@@ -16,33 +16,33 @@ const Home = async () => {
   // Get the data for each age group
   const ageGroupData = await Promise.all(
     ageGroups.map(async (age) => {
-      const team = await getTeamAndGroupForAge(age.toUpperCase())
+      const squad = await getSquadAndGroupForAge(age.toUpperCase())
 
-      if (!team)
+      if (!squad)
         return Promise.resolve({
           lastPlayedGame: null,
-          league: null,
-          leagueTableEntries: [],
+          group: null,
+          groupTableEntries: [],
           nextGame: null,
-          team: null,
-        })
+          squad: null,
+        } as AgeGroupData)
 
-      const lastPlayedGame = await getLastPlayedGame({ teamID: team.team_id })
-      const nextGame = await getNextGame({ teamID: team.team_id })
-      const league = await getLeague(team.group_id)
-      const leagueTableEntries = await getLeagueTable(team.group_id)
+      const lastPlayedGame = await getLastPlayedGame({ squadID: squad.id })
+      const nextGame = await getNextGame({ squadID: squad.id })
+      const group = await getGroup(squad.group_id)
+      const groupTableEntries = await getGroupTable(squad.group_id)
 
       return {
+        group,
+        groupTableEntries,
         lastPlayedGame,
-        league,
-        leagueTableEntries,
         nextGame,
-        team,
+        squad,
       } as AgeGroupData
     })
   )
 
-  const validData: AgeGroupData[] = ageGroupData.filter((data) => data.team)
+  const validData: AgeGroupData[] = ageGroupData.filter((data) => data.squad)
 
   return (
     <main className={styles.homepage}>

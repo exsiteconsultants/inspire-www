@@ -1,23 +1,21 @@
 import { getDB } from './db'
 
-export interface TeamStaffMember {
+export interface SquadStaffMember {
   id: number
   image: string | null
   name: string
   title: string
 }
 
-export default async function getTeamStaff(
-  age: string
-): Promise<TeamStaffMember[]> {
+export default async function getSquadStaff(
+  squadID: number
+): Promise<SquadStaffMember[]> {
   const db = getDB()
 
   const coaches = await db
     .selectFrom('staff')
-    .innerJoin('team_staff', 'staff.id', 'team_staff.staff_id')
-    .innerJoin('team', 'team_staff.team_id', 'team.id')
     .select(['staff.id', 'staff.name', 'staff.title', 'staff.image'])
-    .where('team.age', '=', age.toUpperCase())
+    .where('staff.squad_id', '=', squadID)
     .orderBy('name', 'asc')
     .execute()
 

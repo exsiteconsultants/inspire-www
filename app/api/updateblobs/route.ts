@@ -52,10 +52,10 @@ async function addTeamCrest({ team }: { team: Team }) {
 
   // Get the event ID for the team
   const result = await db
-    .selectFrom('league')
-    .select(['event_id as eventID'])
-    .innerJoin('league_team', 'league.id', 'league_team.group_id')
-    .where('league_team.team_id', '=', team.id)
+    .selectFrom('team')
+    .innerJoin('group', 'team.group_id', 'group.id')
+    .select(['group.event_id as eventID'])
+    .where('team.id', '=', team.id)
     .executeTakeFirst()
 
   if (!result) {

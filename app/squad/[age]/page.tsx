@@ -1,13 +1,4 @@
 import Markdown from 'react-markdown'
-
-import getLastPlayedGame from '@/app/db/getLastGame'
-import getLeague from '@/app/db/getLeague'
-import getLeagueTable from '@/app/db/getLeagueTable'
-import getNextGame from '@/app/db/getNextGame'
-import getTeamAndGroupForAge from '@/app/db/getTeamAndGroupForAge'
-import getTeamResults from '@/app/db/getTeamResults'
-import getTeamSchedule from '@/app/db/getTeamSchedule'
-import getTeamStaff from '@/app/db/getTeamStaff'
 import { SplitContent, MainContent, SubContent } from '@/app/ui/SplitContent'
 import Content from '@/app/ui/Content'
 import ContentHero from '@/app/ui/ContentHero'
@@ -16,66 +7,71 @@ import PreviousGame from '@/app/ui/PreviousGame'
 import ScheduledGame from '@/app/ui/ScheduledGame'
 import TeamStaffMemberCard from '@/app/ui/TeamStaffMemberCard'
 import styles from './styles.module.css'
+import getSquadAndGroupForAge from '@/app/db/getSquadAndGroupForAge'
+import getLastPlayedGame from '@/app/db/getLastGame'
+import getNextGame from '@/app/db/getNextGame'
+import getGroup from '@/app/db/getGroup'
+import getGroupTable from '@/app/db/getGroupTable'
+import getSquadResults from '@/app/db/getSquadResults'
+import getSquadSchedule from '@/app/db/getSquadSchedule'
+import getSquadStaff from '@/app/db/getSquadStaff'
 
 export default async function TeamPage({
   params,
 }: {
   params: { age: string }
 }) {
-  const team = await getTeamAndGroupForAge(params.age.toUpperCase())
+  const squad = await getSquadAndGroupForAge(params.age.toUpperCase())
 
-  if (!team) {
+  if (!squad) {
     return null
   }
 
   // Get the last played game
-  const lastPlayedGame = await getLastPlayedGame({ teamID: team.team_id })
-  const nextGame = await getNextGame({ teamID: team.team_id })
-  const teamResults = await getTeamResults({ teamID: team.team_id })
-  const teamSchedule = await getTeamSchedule({ teamID: team.team_id })
-  const league = await getLeague(team.group_id)
-  const leagueTableEntries = await getLeagueTable(team.group_id)
-  const staff = await getTeamStaff(params.age)
+  const lastPlayedGame = await getLastPlayedGame({ squadID: squad.id })
+  const nextGame = await getNextGame({ squadID: squad.id })
+  const squadResults = await getSquadResults({ squadID: squad.id })
+  const squadSchedule = await getSquadSchedule({ squadID: squad.id })
+  const group = await getGroup(squad.group_id)
+  const groupTableEntries = await getGroupTable(squad.group_id)
+  const staff = await getSquadStaff(squad.id)
 
   return (
     <div className={styles.wrapper}>
-      <ContentHero
-        image={`/team_photos/${team.team_photo}`}
-        title={`${team.name} - ${team.age}`}
-      />
+      <ContentHero image={`/team_photos/${squad.photo}`} title={squad.age} />
 
       <SplitContent>
         <MainContent>
           <Content>
-            <Markdown>{team.bio}</Markdown>
+            <Markdown>{squad.bio}</Markdown>
           </Content>
 
           <Content>
-            {league && leagueTableEntries && (
+            {group && groupTableEntries && (
               <LeagueTableFull
-                league={league}
-                leagueTableEntries={leagueTableEntries}
-                team={team}
+                group={group}
+                groupTableEntries={groupTableEntries}
+                squad={squad}
               />
             )}
           </Content>
 
-          {teamResults.length > 0 && (
+          {squadResults.length > 0 && (
             <Content>
               <h3>Results</h3>
               <div className={styles.resultList}>
-                {teamResults.map((game) => (
+                {squadResults.map((game) => (
                   <PreviousGame key={game.id} game={game} />
                 ))}
               </div>
             </Content>
           )}
 
-          {teamSchedule.length > 0 && (
+          {squadSchedule.length > 0 && (
             <Content>
               <h3>Schedule</h3>
               <div className={styles.resultList}>
-                {teamSchedule.map((game) => (
+                {squadSchedule.map((game) => (
                   <ScheduledGame key={game.date.getTime()} game={game} />
                 ))}
               </div>

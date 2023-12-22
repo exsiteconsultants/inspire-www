@@ -8,15 +8,51 @@ import type {
 
 export type Timestamp = ColumnType<Date, Date | string, Date | string>
 
+export interface SquadTable {
+  id: number
+  name: string
+  age: string
+  bio: string | null
+  photo: string | null
+}
+
+export type Squad = Selectable<SquadTable>
+export type NewSquad = Insertable<SquadTable>
+export type SquadUpdate = Updateable<SquadTable>
+
+export interface TeamTable {
+  id: number
+  name: string
+  crest: string | null
+  group_id: number
+  squad_id: number | null
+}
+
+export type Team = Selectable<TeamTable>
+export type NewTeam = Insertable<TeamTable>
+export type TeamUpdate = Updateable<TeamTable>
+
+export interface GroupTable {
+  id: Generated<number>
+  name: string
+  age: string
+  cup: boolean
+  event_id: number
+}
+
+export type Group = Selectable<GroupTable>
+export type NewGroup = Insertable<GroupTable>
+export type GroupUpdate = Updateable<GroupTable>
+
 export interface GameTable {
-  away_team_id: number
-  away_team_score: number | null
-  date: Timestamp
+  id: Generated<number>
   game_number: number
+  date: Timestamp
   group_id: number
   home_team_id: number
   home_team_score: number | null
-  id: Generated<number>
+  away_team_id: number
+  away_team_score: number | null
   location: string | null
 }
 
@@ -24,79 +60,33 @@ export type Game = Selectable<GameTable>
 export type NewGame = Insertable<GameTable>
 export type GameDBUpdate = Updateable<GameTable>
 
-export interface LeagueTable {
-  age: string
-  cup: Generated<boolean>
-  event_id: number
-  group_id: number
-  id: Generated<number>
-  name: string
-}
-
-export type League = Selectable<LeagueTable>
-export type NewLeague = Insertable<LeagueTable>
-export type LeagueUpdate = Updateable<LeagueTable>
-
-export interface LeagueTableEntryTable {
-  drawn: Generated<number>
-  goal_difference: Generated<number>
-  goals_against: Generated<number>
-  goals_for: Generated<number>
+export interface GroupTableTable {
   id: Generated<number>
   group_id: number
   team_id: number
-  lost: Generated<number>
-  played: Generated<number>
-  points: Generated<number>
+  drawn: number
+  goal_difference: number
+  goals_against: number
+  goals_for: number
+  lost: number
+  played: number
+  points: number
   position: number
-  won: Generated<number>
+  won: number
 }
 
-export type LeagueTableEntry = Selectable<LeagueTableEntryTable>
-export type NewLeagueTableEntry = Insertable<LeagueTableEntryTable>
-export type LeagueTableEntryUpdate = Updateable<LeagueTableEntryTable>
-
-export interface LeagueTeamTable {
-  id: Generated<number>
-  group_id: number
-  team_id: number
-}
-
-export type LeagueTeam = Selectable<LeagueTeamTable>
-export type NewLeagueTeam = Insertable<LeagueTeamTable>
-export type LeagueTeamUpdate = Updateable<LeagueTeamTable>
-
-export interface TeamTable {
-  age: string
-  bio: string | null
-  crest: string | null
-  id: number
-  isownteam: Generated<boolean>
-  name: string
-  team_photo: string | null
-}
-
-export type Team = Selectable<TeamTable>
-export type NewTeam = Insertable<TeamTable>
-export type TeamUpdate = Updateable<TeamTable>
-
-export interface TeamStaffTable {
-  id: Generated<number>
-  staff_id: number
-  team_id: number
-}
-
-export type TeamStaff = Selectable<TeamStaffTable>
-export type NewTeamStaff = Insertable<TeamStaffTable>
-export type TeamStaffUpdate = Updateable<TeamStaffTable>
+export type GroupTableEntry = Selectable<GroupTableTable>
+export type NewGroupTableEntry = Insertable<GroupTableTable>
+export type GroupTableEntryUpdate = Updateable<GroupTableTable>
 
 export interface StaffTable {
-  bio: string | null
-  email: string | null
   id: Generated<number>
-  image: string | null
   name: string
   title: string
+  bio: string | null
+  email: string | null
+  image: string | null
+  squad_id: number | null
 }
 
 export type Staff = Selectable<StaffTable>
@@ -105,11 +95,10 @@ export type StaffUpdate = Updateable<StaffTable>
 
 export interface DB {
   game: GameTable
-  league: LeagueTable
-  league_table: LeagueTableEntryTable
-  league_team: LeagueTeamTable
+  group: GroupTable
+  group_table: GroupTableTable
   team: TeamTable
-  team_staff: TeamStaffTable
+  squad: SquadTable
   staff: StaffTable
 }
 
@@ -120,9 +109,11 @@ export interface Result {
   home_team_score: number | null
   id: number
   home_team_id: number
+  home_squad_id: number | null
   home_team_name: string
   home_team_crest: string | null
   away_team_id: number
+  away_squad_id: number | null
   away_team_score: number | null
   away_team_name: string
   away_team_crest: string | null
@@ -131,11 +122,13 @@ export interface Result {
 export interface SheduledGameRecord {
   away_team_crest: string | null
   away_team_id: number
+  away_squad_id: number | null
   away_team_name: string
   crest: string | null
   date: Date
   home_team_crest: string | null
   home_team_id: number
+  home_squad_id: number | null
   home_team_name: string
   home: boolean
   id: number
@@ -143,9 +136,12 @@ export interface SheduledGameRecord {
   opponent: string
 }
 
-export type TeamAndGroup = Team & LeagueTeam
+export type SquadAndGroup = Squad & {
+  team_id: number
+  group_id: number
+}
 
-export interface LeagueTableEntryAndTeam extends LeagueTableEntry {
+export interface GroupTableEntryAndTeam extends GroupTableEntry {
   team: string
   crest: string | null
 }

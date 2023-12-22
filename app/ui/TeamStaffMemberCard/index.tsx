@@ -1,10 +1,10 @@
 import Image from 'next/image'
-import { TeamStaffMember } from '@/app/db/getTeamStaff'
+import { SquadStaffMember } from '@/app/db/getSquadStaff'
 import styles from './styles.module.css'
 import Link from 'next/link'
 
 const TeamStaffMemberCard: React.FC<{
-  staff: TeamStaffMember
+  staff: SquadStaffMember
 }> = ({ staff }) => (
   <Link href={`/staff/coaches#coach-${staff.id}`} className={styles.link}>
     <article className={styles.teamStaffMember}>

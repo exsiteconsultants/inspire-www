@@ -1,5 +1,6 @@
 import { JPLLeagueTableEntry } from '@/app/lib/gotSport/types'
 import { getDB } from './db'
+import { NewGroupTableEntry } from './types'
 
 export default async function updateLeagueTable({
   leagueTable,
@@ -7,9 +8,8 @@ export default async function updateLeagueTable({
   leagueTable: JPLLeagueTableEntry[]
 }) {
   const db = getDB()
-  const start = Date.now()
 
-  const newEntries = leagueTable.map((entry) => ({
+  const newEntries: NewGroupTableEntry[] = leagueTable.map((entry) => ({
     team_id: entry.teamID,
     group_id: entry.groupID,
     position: entry.position,
@@ -24,11 +24,9 @@ export default async function updateLeagueTable({
   }))
 
   await db
-    .deleteFrom('league_table')
+    .deleteFrom('group_table')
     .where('group_id', '=', leagueTable[0].groupID)
     .execute()
 
-  await db.insertInto('league_table').values(newEntries).execute()
-
-  console.log('Updating league table took', Date.now() - start, 'ms')
+  await db.insertInto('group_table').values(newEntries).execute()
 }
