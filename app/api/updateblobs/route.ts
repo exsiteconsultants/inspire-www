@@ -2,6 +2,7 @@ import { Team } from '@/app/db/types'
 import { getDB } from '@/app/db/db'
 import { getTeamCrestUrl } from '@/app/lib/gotSport'
 import { put as putBlob, list as listBlobs } from '@vercel/blob'
+import { revalidatePath } from 'next/cache'
 
 export const dynamic = 'force-dynamic' // defaults to force-static
 
@@ -42,6 +43,9 @@ export async function GET() {
           .execute()
       }
     }
+
+    revalidatePath('/', 'page')
+    revalidatePath('/squad/[id]', 'page')
 
     console.log('------------------- UPDATING BLOB:DONE -------------------')
 

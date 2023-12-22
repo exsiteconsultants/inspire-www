@@ -2,6 +2,7 @@ import addTeams from '@/app/db/addTeams'
 import { getDB } from '@/app/db/db'
 import updateGames from '@/app/db/updateGames'
 import parseCupTeamPage from '@/app/lib/gotSport/parseCupTeamPage'
+import { revalidatePath } from 'next/cache'
 
 export const dynamic = 'force-dynamic' // defaults to force-static
 
@@ -41,6 +42,9 @@ export async function GET() {
         await updateGames({ games: data.games, groupID: team.group_id })
       })
     )
+
+    revalidatePath('/', 'page')
+    revalidatePath('/squad/[id]', 'page')
 
     return Response.json({ done: true })
   } catch (error) {
