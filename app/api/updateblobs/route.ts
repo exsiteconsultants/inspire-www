@@ -5,46 +5,51 @@ import { put as putBlob, list as listBlobs } from '@vercel/blob'
 
 export const dynamic = 'force-dynamic' // defaults to force-static
 
+const gotoSportRoolUrl = 'https://system.gotsport.com'
 const crestImagePrefix = 'images/crests'
 
 export async function GET() {
   console.log('------------------- UPDATING BLOBS -------------------')
+  try {
+    const db = getDB()
 
-  const db = getDB()
+    // Get a list of the teams and associated crest urls
+    const teams: Team[] = await db.selectFrom('team').selectAll().execute()
 
-  // Get a list of the teams and associated crest urls
-  const teams: Team[] = await db.selectFrom('team').selectAll().execute()
+    // Get a list of the blobs in the images/crests folder
+    const { blobs } = await listBlobs({ prefix: crestImagePrefix })
 
-  // Get a list of the blobs in the images/crests folder
-  const { blobs } = await listBlobs({ prefix: crestImagePrefix })
+    for (const team of teams) {
+      // Generate the blob path to expect
+      const blobPath = `${crestImagePrefix}/${team.id}`
 
-  for (const team of teams) {
-    // Generate the blob path to expect
-    const blobPath = `${crestImagePrefix}/${team.id}`
+      // Does the blob exist?
+      const found = blobs.find((blob) => blob.pathname.includes(blobPath))
 
-    // Does the blob exist?
-    const found = blobs.find((blob) => blob.pathname.includes(blobPath))
+      // No? Add it and update the database with the generated URL
+      if (!found) {
+        await addTeamCrest({ team })
+        continue
+      }
 
-    // No? Add it and update the database with the generated URL
-    if (!found) {
-      await addTeamCrest({ team })
-      return
+      // It exists, but does the database have the URL?
+      if (team.crest !== found.url) {
+        // No? Update the database with the generated URL
+        await db
+          .updateTable('team')
+          .set({ crest: found.url })
+          .where('id', '=', team.id)
+          .execute()
+      }
     }
 
-    // It exists, but does the database have the URL?
-    if (team.crest !== found.url) {
-      // No? Update the database with the generated URL
-      await db
-        .updateTable('team')
-        .set({ crest: found.url })
-        .where('id', '=', team.id)
-        .execute()
-    }
+    console.log('------------------- UPDATING BLOB:DONE -------------------')
+
+    return Response.json({ done: true })
+  } catch (error) {
+    console.error(error)
+    return Response.json({ error })
   }
-
-  console.log('------------------- UPDATING BLOB:DONE -------------------')
-
-  return Response.json({ done: true })
 }
 
 async function addTeamCrest({ team }: { team: Team }) {
@@ -62,7 +67,7 @@ async function addTeamCrest({ team }: { team: Team }) {
     return
   }
 
-  // Load the jpl tea page and get the crest url
+  // Load the jpl team page and get the crest url
   const jplCrestUrl = await getTeamCrestUrl({
     eventID: result.eventID,
     teamID: team.id,
@@ -87,7 +92,8 @@ async function addTeamCrest({ team }: { team: Team }) {
   const blobPath = `${crestImagePrefix}/${team.id}.${imageExtension}`
 
   // Fetch the image and put it in the blob store
-  const image = await fetch(jplCrestUrl)
+  const expandedUrl = `${gotoSportRoolUrl}${jplCrestUrl}`
+  const image = await fetch(expandedUrl)
   const sourceBlob = await image.blob()
   const { url: teamBlobUrl } = await putBlob(blobPath, sourceBlob, {
     access: 'public',

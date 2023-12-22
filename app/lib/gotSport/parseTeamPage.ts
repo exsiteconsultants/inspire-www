@@ -15,8 +15,7 @@ export async function getTeamCrestUrl({
   eventID: number
   teamID: number
 }) {
-  const logoCSSPath =
-    '#app-main > div:nth-child(1) > section > div > div:nth-child(3) > div > div > div > div:nth-child(1) > div > div > div.col-md-2.col-xs-3 > img'
+  const logoCSSPath = '#app-main .img-responsive'
 
   const teamPage = await getTeamPage({ eventID, teamID })
   const dom = new JSDOM(teamPage)
@@ -128,11 +127,15 @@ function parseGames({
       10
     )
 
+    const awayTeamName = cells[4]?.querySelector('a')?.textContent?.trim() || ''
+
     const homeTeamId = parseInt(
       cells[2]?.querySelector('a')?.getAttribute('href')?.split('=').pop() ||
         '',
       10
     )
+
+    const homeTeamName = cells[2]?.querySelector('a')?.textContent?.trim() || ''
 
     // Get the content of the score cell and trim the start and end
     const scoreCellContent = cells[3]?.textContent?.replace('\n', '').trim()
@@ -163,9 +166,11 @@ function parseGames({
       gameNumber,
       groupID,
       awayTeamId,
+      awayTeamName,
       awayTeamScore,
       dateTime,
       homeTeamId,
+      homeTeamName,
       homeTeamScore,
       location,
     }
