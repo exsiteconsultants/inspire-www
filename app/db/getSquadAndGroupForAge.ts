@@ -2,7 +2,7 @@ import { getDB } from './db'
 import { SquadAndGroup } from './types'
 
 /** Find the squad for the given age and the group id for the team
- * they play as in the league
+ * that play in the league
  */
 export default async function getSquadAndGroupForAge(
   age: string
@@ -22,7 +22,10 @@ export default async function getSquadAndGroupForAge(
       'team.group_id',
     ])
     .where((eb) =>
-      eb.and([eb('squad.age', '=', age), eb('group.cup', '=', false)])
+      eb.and([
+        eb('squad.age', '=', age),
+        eb('group.group_type', '=', 'jpl_league'),
+      ])
     )
     .executeTakeFirst()
 }

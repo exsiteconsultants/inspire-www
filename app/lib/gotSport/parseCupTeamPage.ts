@@ -199,10 +199,6 @@ function parseGames({
 export async function parseCupTeamPage(sourceTeam: JPLTeamInput) {
   const { eventID, groupID, teamID } = sourceTeam
 
-  if (teamID === 1840614) {
-    console.log('here')
-  }
-
   // Fetch the team page from the JPL Warrior site and parse it into a HTML Document that can be manipulated
   const html = await getTeamPage({ eventID, teamID })
   const dom = new JSDOM(html)

@@ -1,17 +1,26 @@
-import addTeams from '@/app/db/addTeams'
 import { getDB } from '@/app/db/db'
-import updateGames from '@/app/db/updateGames'
-import parseCupTeamPage from '@/app/lib/gotSport/parseCupTeamPage'
+import { NewGame } from '@/app/db/types'
+import { parseCupGamesPage } from '@/app/lib/hampshire/parseCupGamesPage'
 import { revalidatePath } from 'next/cache'
 
 export const dynamic = 'force-dynamic' // defaults to force-static
+
+async function addGames(games: NewGame[]) {
+  const db = getDB()
+  await db.insertInto('game').values(games).execute()
+}
+
+async function clearGames({ groupID }: { groupID: number }) {
+  const db = getDB()
+  await db.deleteFrom('game').where('group_id', '=', groupID).execute()
+}
 
 export async function GET() {
   try {
     const db = getDB()
 
     // Get a list of teams that belong to a squad that are part of
-    // a cup
+    // the Hampshire cup
     const teams = await db
       .selectFrom('team')
       .innerJoin('group', 'team.group_id', 'group.id')
@@ -24,29 +33,31 @@ export async function GET() {
       ])
       .where((eb) =>
         eb.and([
-          eb('group.group_type', '=', 'jpl_cup'),
+          eb('group.group_type', '=', 'hampshire_cup'),
           eb('team.squad_id', 'is not', null),
         ])
       )
       .execute()
 
+    const result: NewGame[] = []
+
     await Promise.all(
       teams.map(async (team) => {
-        const data = await parseCupTeamPage({
-          eventID: team.event_id,
-          groupID: team.group_id,
-          teamID: team.id,
-        })
+        const games = await parseCupGamesPage(team)
 
-        await addTeams({ teams: data.teams, age: team.age })
-        await updateGames({ games: data.games, groupID: team.group_id })
+        await clearGames({ groupID: team.group_id })
+
+        if (games.length > 0) {
+          await addGames(games)
+          result.push(...games)
+        }
       })
     )
 
     revalidatePath('/', 'page')
     revalidatePath('/squad/[id]', 'page')
 
-    return Response.json({ done: true })
+    return Response.json(result)
   } catch (error) {
     return Response.json({ error })
   }

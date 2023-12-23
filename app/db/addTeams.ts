@@ -19,7 +19,6 @@ export default async function addTeams({
 
       // If the team doesn't exist in the database then add it.
       if (Number(dbTeams.length) === 0) {
-        console.log('Add Team')
         await db
           .insertInto('team')
           .values({
