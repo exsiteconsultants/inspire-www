@@ -33,4 +33,4 @@ INSERT INTO team (id, name, group_id, squad_id)
     (1001, 'IGF Youth U12 Inspire Girls Academy', 1001,1),
     (1002, 'IGF Youth U13 Inspire Girls Academy', 1002, 2),
     (1003, 'IGF Youth U15 Inspire Girls Academy', 1003, 3),
-    (1004, 'IGF Youth U16 Inspire Girls Academy', 1004, 3);
+    (1004, 'IGF Youth U16 Inspire Girls Academy', 1004, 4);
