@@ -24,7 +24,7 @@ export async function GET() {
       ])
       .where((eb) =>
         eb.and([
-          eb('group.cup', '=', true),
+          eb('group.group_type', '=', 'jpl_cup'),
           eb('team.squad_id', 'is not', null),
         ])
       )

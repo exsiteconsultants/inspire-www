@@ -36,7 +36,7 @@ export interface GroupTable {
   id: Generated<number>
   name: string
   age: string
-  cup: boolean
+  group_type: 'jpl_league' | 'jpl_cup' | 'hampshire_cup'
   event_id: number
 }
 
