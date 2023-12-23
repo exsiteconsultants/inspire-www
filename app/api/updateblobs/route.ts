@@ -10,7 +10,6 @@ const gotoSportRoolUrl = 'https://system.gotsport.com'
 const crestImagePrefix = 'images/crests'
 
 export async function GET() {
-  console.log('------------------- UPDATING BLOBS -------------------')
   try {
     const db = getDB()
 
@@ -46,8 +45,6 @@ export async function GET() {
 
     revalidatePath('/', 'page')
     revalidatePath('/squad/[id]', 'page')
-
-    console.log('------------------- UPDATING BLOB:DONE -------------------')
 
     return Response.json({ done: true })
   } catch (error) {

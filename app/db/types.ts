@@ -21,7 +21,7 @@ export type NewSquad = Insertable<SquadTable>
 export type SquadUpdate = Updateable<SquadTable>
 
 export interface TeamTable {
-  id: number
+  id: Generated<number>
   name: string
   crest: string | null
   group_id: number

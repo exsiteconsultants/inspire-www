@@ -8,8 +8,6 @@ import updateGames from '@/app/db/updateGames'
 export const dynamic = 'force-dynamic' // defaults to force-static
 
 export async function GET() {
-  console.log('------------------- FETCHING JPL DATA -------------------')
-
   try {
     const db = getDB()
 
@@ -49,15 +47,9 @@ export async function GET() {
       })
     )
 
-    console.log('------------------- INVALIDATING CACHE -------------------')
-
     // Invalidate the cache for the home page and the team pages
     revalidatePath('/', 'page')
     revalidatePath('/squad/[id]', 'page')
-
-    console.log(
-      '------------------- FETCHING JPL DATA:DONE -------------------'
-    )
 
     return Response.json({ done: true })
   } catch (error) {
