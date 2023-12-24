@@ -22,6 +22,17 @@ export const metadata: Metadata = {
       },
     ],
   },
+  metadataBase: new URL('https://www.inspiregirlsacademy.co.uk/'),
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-US': '/en-US',
+      'en-GB': '/en-GB',
+    },
+  },
+  openGraph: {
+    images: '/images/iga_logo.webp',
+  },
 }
 
 export default function RootLayout({
