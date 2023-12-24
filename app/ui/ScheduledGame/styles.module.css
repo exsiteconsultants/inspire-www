@@ -65,12 +65,6 @@
   color: #aaa;
 }
 
-@media screen and (max-width: 809px) {
-  .homeAway {
-    display: none;
-  }
-}
-
 .crest {
   width: 68px;
   height: 68px;

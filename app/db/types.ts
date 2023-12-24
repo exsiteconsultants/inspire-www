@@ -117,6 +117,7 @@ export interface Result {
   away_team_score: number | null
   away_team_name: string
   away_team_crest: string | null
+  group_type: 'jpl_league' | 'jpl_cup' | 'hampshire_cup'
 }
 
 export interface SheduledGameRecord {
@@ -134,6 +135,7 @@ export interface SheduledGameRecord {
   id: number
   location: string | null
   opponent: string
+  group_type: 'jpl_league' | 'jpl_cup' | 'hampshire_cup'
 }
 
 export type SquadAndGroup = Squad & {

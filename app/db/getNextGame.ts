@@ -15,6 +15,7 @@ export default async function getNextGame({
     .selectFrom('game')
     .innerJoin('team as home', 'home.id', 'game.home_team_id')
     .innerJoin('team as away', 'away.id', 'game.away_team_id')
+    .innerJoin('group', 'group.id', 'game.group_id')
     .select([
       'game.id',
       'game.date',
@@ -29,6 +30,7 @@ export default async function getNextGame({
       'away.name as away_team_name',
       'away.crest as away_team_crest',
       'game.location',
+      'group.group_type',
     ])
     .where((eb) =>
       eb.and([

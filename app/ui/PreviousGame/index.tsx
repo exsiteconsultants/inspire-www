@@ -13,7 +13,11 @@ const PreviousGame: React.FC<{
         {latestResult && <span>Last Result - </span>}
         {getDateString(game.date)}
       </p>
-      <p className={styles.homeAway}>{game.home ? 'HOME' : 'AWAY'}</p>
+      <p className={styles.homeAway}>
+        {game.group_type === 'jpl_cup' && 'JPL Cup - '}
+        {game.group_type === 'hampshire_cup' && 'Hampshire Cup - '}
+        {game.home ? 'HOME' : 'AWAY'}
+      </p>
     </div>
     <div className={styles.content}>
       {game.crest && (
