@@ -1,8 +1,8 @@
-import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import Header from '@/app/ui/Header'
 import Socials from '@/app/ui/Socials'
 import './global.css'
+import Sponsors from './ui/Sponsors'
 
 export const metadata: Metadata = {
   title: 'Inspire Girls Academy',
@@ -41,7 +41,7 @@ export default function RootLayout({
       <body>
         <Header />
         {children}
-        <Analytics />
+        <Sponsors />
         <Socials />
       </body>
     </html>

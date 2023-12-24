@@ -1,0 +1,63 @@
+.bigCard {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.bigCard > * {
+  width: 100%;
+  overflow: hidden;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+
+  margin: 0 1rem;
+}
+
+.bigCard > *:nth-child(2) {
+  display: none;
+}
+
+@media only screen and (min-width: 645px) {
+  .bigCard {
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    height: 250px;
+  }
+
+  .bigCard > * {
+    width: 50%;
+    overflow: hidden;
+  }
+
+  .bigCard .card-content {
+    margin: 0 2rem;
+  }
+
+  .bigCard > *:nth-child(2) {
+    display: block;
+  }
+
+  .coverImage {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+  }
+}
+
+.exsiteLogo {
+  font-size: 4rem;
+}
+
+.exsiteHighlight {
+  color: rgb(208, 2, 27);
+}

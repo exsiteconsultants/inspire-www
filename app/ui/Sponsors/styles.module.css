@@ -1,0 +1,22 @@
+.sponsors {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  margin: 0 auto;
+  list-style: none;
+  color: #fff;
+}
+
+.sponsor {
+  margin: 8px;
+}
+
+.exsiteLogo {
+  font-size: 2rem;
+}
+
+.exsiteHighlight {
+  color: rgb(208, 2, 27);
+}
