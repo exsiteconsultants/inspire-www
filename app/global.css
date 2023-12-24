@@ -13,9 +13,6 @@
   --color-sky-blue: #87ceeb;
   --color-border-light: #e8e8e8;
   --color-border-medium: #ccc;
-
-  --mobile-breakpoint: 768px;
-  --desktop-breakpoint: 1024px;
 }
 
 html,

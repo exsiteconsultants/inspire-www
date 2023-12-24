@@ -15,7 +15,7 @@
   background-image: url(/images/stories/cover.jpg);
 }
 
-@media screen and (max-width: var(--mobile-breakpoint)) {
+@media screen and (max-width: 768px) {
   .hero {
     height: 30vh;
     min-height: auto;
@@ -61,7 +61,7 @@
   margin: 0 auto;
 }
 
-@media screen and (max-width: var(--mobile-breakpoint)) {
+@media screen and (max-width: 768px) {
   .featuredTitle {
     font-size: var(--font-size-large);
     line-height: 1.5rem;
@@ -76,7 +76,7 @@
   margin: 0.5rem 0 0 0;
 }
 
-@media screen and (max-width: var(--mobile-breakpoint)) {
+@media screen and (max-width: 768px) {
   .featuredSubTitle {
     background-color: rgba(0, 0, 0, 0.15);
     font-size: var(--font-size-small);
@@ -90,7 +90,7 @@
   z-index: 5;
 }
 
-@media screen and (max-width: var(--mobile-breakpoint)) {
+@media screen and (max-width: 768px) {
   .maxWidthContainer {
     padding: 0.25rem;
   }
