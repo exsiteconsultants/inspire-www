@@ -8,6 +8,12 @@
   padding: 0.5rem 1rem;
 }
 
+@media screen and (max-width: 1024px) {
+  .scheduledGame {
+    padding: 0.5rem 0.25rem;
+  }
+}
+
 .header {
   display: flex;
   flex-direction: row;
@@ -42,6 +48,18 @@
   font-weight: 700;
 }
 
+@media screen and (max-width: 1024px) {
+  .opposition {
+    font-size: var(--font-size-xsmall);
+  }
+}
+
+@media screen and (max-width: 809px) {
+  .opposition {
+    font-size: var(--font-size-medium);
+  }
+}
+
 .location {
   font-size: var(--font-size-small);
   color: #aaa;
@@ -50,5 +68,17 @@
 @media screen and (max-width: 809px) {
   .homeAway {
     display: none;
+  }
+}
+
+.crest {
+  width: 68px;
+  height: 68px;
+}
+
+@media screen and (max-width: 1024px) {
+  .crest {
+    width: 48px;
+    height: 48px;
   }
 }
