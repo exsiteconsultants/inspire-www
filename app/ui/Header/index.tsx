@@ -54,6 +54,10 @@ const menuItemsData = [
         title: 'Our Mission',
         url: '/about/mission',
       },
+      {
+        title: 'Code of Conduct',
+        url: '/about/conduct',
+      },
     ],
   },
   {
