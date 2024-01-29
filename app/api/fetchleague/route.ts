@@ -53,6 +53,7 @@ export async function GET() {
 
     return Response.json({ done: true })
   } catch (error) {
+    console.log(error)
     return Response.json({ error })
   }
 }
