@@ -93,18 +93,11 @@ function parseGames({
   groupID: number
 }): JPLGame[] {
   const gamesSectionSelector =
-    '#app-main > div:nth-child(1) > section > div > div:nth-child(3) > div > div > div > div:nth-child(6) > div > div.row > div'
-  const gamesSectionSelectorAlt =
-    '#app-main > div:nth-child(1) > section > div > div:nth-child(2) > div > div > div > div:nth-child(6) > div > div.row > div'
+    '#js-form-2 > div:nth-child(1) > div > div > div > div:nth-child(6) > div > div > div.panel-body > div > div'
 
   const gameSectionSelector = '.hidden-xs'
 
   let gamesSection = document.querySelector(gamesSectionSelector)
-
-  // Some teams have a bug in the Gosport page so need an alternative selector
-  if (!gamesSection) {
-    gamesSection = document.querySelector(gamesSectionSelectorAlt)
-  }
 
   if (!gamesSection) {
     return []
@@ -120,10 +113,10 @@ function parseGames({
     const cells = section.querySelectorAll('td')
 
     const gameNumber = parseInt(cells[0].textContent || '', 10)
-    const dateTimeStr = section
-      .querySelector('h4')
-      ?.textContent?.replace('\n', '')
+    const dateTimeStr = cells[1].textContent
+      ?.replace('\n', '')
       .trim()
+      .substring(0, 12)
 
     const dateTime = new Date(dateTimeStr || '')
 
