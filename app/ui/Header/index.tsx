@@ -58,6 +58,10 @@ const menuItemsData = [
         title: 'Code of Conduct',
         url: '/about/conduct',
       },
+      {
+        title: 'Constitution',
+        url: '/about/constitution',
+      },
     ],
   },
   {
