@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/react'
 import Header from '@/app/ui/Header'
 import Socials from '@/app/ui/Socials'
+import Sponsors from '@/app/ui/Sponsors'
 import './global.css'
-import Sponsors from './ui/Sponsors'
 
 export const metadata: Metadata = {
   title: 'Inspire Girls Academy',
@@ -35,26 +36,23 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
-  children,
-}: {
+export const RootLayout: React.FC<{
   children: React.ReactNode
-}) {
-  return (
-    <html lang="en">
-      <head>
-        <link
-          data-n-head="ssr"
-          rel="stylesheet"
-          href="https://use.typekit.net/wcy1ghe.css"
-        ></link>
-      </head>
-      <body>
-        <Header />
-        {children}
-        <Sponsors />
-        <Socials />
-      </body>
-    </html>
-  )
-}
+}> = ({ children }) => (
+  <html lang="en">
+    <head>
+      <link
+        data-n-head="ssr"
+        rel="stylesheet"
+        href="https://use.typekit.net/wcy1ghe.css"
+      ></link>
+    </head>
+    <body>
+      <Header />
+      {children}
+      <Sponsors />
+      <Socials />
+      <Analytics />
+    </body>
+  </html>
+)
