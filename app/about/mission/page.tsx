@@ -64,9 +64,9 @@ export default function MissionPage() {
           transcends the game, fostering a spirit of unity and purpose.
         </p>
         <p>
-          Our leadership, embodied by our female President, is complemented by a
-          team of experienced committee members, coaches and managers—both male
-          and female—who share a commitment to our vision and mission.
+          We&apos;re a team of experienced committee members, coaches and
+          managers—both male and female—who share a commitment to our vision and
+          mission.
         </p>
         <p>
           Unified by the understanding of the profound importance and core goals

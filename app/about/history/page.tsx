@@ -27,12 +27,6 @@ export default function AboutPage() {
           aspiring athletes for the rigors of the professional game.
         </p>
         <p>
-          In November 2021, fate intervened as Darren crossed paths with Sophie
-          Hollis. Sharing identical aspirations, they united forces. IGF FC was
-          born, with Sophie steering the ship as Chair, and Darren assuming the
-          pivotal role of Community Development Officer.
-        </p>
-        <p>
           The inaugural season proved to be a resounding success, laying the
           foundation for a bright future. In the summer of 2023, the project
           entered its next phase, marked by a significant transformation. A new
