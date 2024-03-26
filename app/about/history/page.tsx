@@ -31,9 +31,7 @@ export default function AboutPage() {
           foundation for a bright future. In the summer of 2023, the project
           entered its next phase, marked by a significant transformation. A new
           name, Inspire Girls Academy (IGA), was adopted, signaling a broader
-          commitment to empowerment and excellence. A dedicated committee was
-          appointed, with Sophie moving to President, supported by a Chair, Vice
-          Chair, Treasurer, CWO, and Club Secretary.
+          commitment to empowerment and excellence.
         </p>
         <p>
           As the pages of our chronicle turn, Inspire Girls Academy stands as a
